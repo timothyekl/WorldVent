@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VentilatorViewController.swift
 //  WorldVent
 //
 //  Created by Timothy Ekl on 4/12/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class VentilatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
