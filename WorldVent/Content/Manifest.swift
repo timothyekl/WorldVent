@@ -19,3 +19,17 @@ struct Manifest: Decodable {
     var lastUpdated: Date
     var bulletin: Bulletin
 }
+
+/// Content is a snapshot of an entire documentation ("content") directory.
+struct Content {
+    enum Source {
+        case bundle
+        case networkHost(URL)
+    }
+    let source: Source
+    
+    let manifest: Manifest
+    var date: Date {
+        return manifest.lastUpdated
+    }
+}
