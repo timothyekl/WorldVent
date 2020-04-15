@@ -68,9 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				2243EAF02443EE2D005C3090 /* AppDelegate.swift */,
-				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
-				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
-				2243EB042443F567005C3090 /* SettingsViewController.swift */,
+				226ECC022446E79F00C9F201 /* ViewControllers */,
 				226ECC012446DDF600C9F201 /* Assets */,
 				2243EAFE2443EE2F005C3090 /* Info.plist */,
 			);
@@ -95,6 +93,16 @@
 				CDEDB22A2444EFA800A43BFF /* vent.jpeg */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		226ECC022446E79F00C9F201 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
+				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
+				2243EB042443F567005C3090 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
