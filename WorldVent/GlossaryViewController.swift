@@ -7,7 +7,8 @@
 //
 
 import UIKit
+import WebKit
 
 class GlossaryViewController: UIViewController {
-    
+    @IBOutlet var webView: WKWebView!
 }

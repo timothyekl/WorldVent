@@ -15,6 +15,8 @@
 		2243EB052443F567005C3090 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2243EB042443F567005C3090 /* SettingsViewController.swift */; };
 		CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CDEDB22A2444EFA800A43BFF /* vent.jpeg */; };
 		226ECBFB2446DBF600C9F201 /* GlossaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */; };
+		226ECBFE2446DD6800C9F201 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ECBFD2446DD6800C9F201 /* WebKit.framework */; };
+		226ECC002446DD7A00C9F201 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ECBFF2446DD7A00C9F201 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		2243EB042443F567005C3090 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 		226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossaryViewController.swift; sourceTree = "<group>"; };
+		226ECBFD2446DD6800C9F201 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		226ECBFF2446DD7A00C9F201 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226ECC002446DD7A00C9F201 /* UIKit.framework in Frameworks */,
+				226ECBFE2446DD6800C9F201 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +52,7 @@
 			children = (
 				2243EAEF2443EE2D005C3090 /* WorldVent */,
 				2243EAEE2443EE2D005C3090 /* Products */,
+				226ECBFC2446DD6800C9F201 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +78,15 @@
 				CDEDB22A2444EFA800A43BFF /* vent.jpeg */,
 			);
 			path = WorldVent;
+			sourceTree = "<group>";
+		};
+		226ECBFC2446DD6800C9F201 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				226ECBFF2446DD7A00C9F201 /* UIKit.framework */,
+				226ECBFD2446DD6800C9F201 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
