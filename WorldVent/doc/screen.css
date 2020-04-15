@@ -1,0 +1,35 @@
+
+body {
+	margin-left: 5%;
+	margin-right: 5%;
+	font-family: "Open Sans"
+}
+
+a:link,a:visited,a:hover {
+	text-decoration:none;
+	color: #666;
+}
+
+h1,h2,h3,h4 {
+	font-family: "Bitter";
+}
+
+
+h1 a:link,h1 a:visited {
+	color:000;
+}
+
+
+
+dt {font-weight:900;}
+
+
+
+footer {
+	width: 100%;
+	background-color: black;
+	color: white;
+	padding: 1em 0 1em 0;
+	text-align: center;
+	font-size: .75em;
+}

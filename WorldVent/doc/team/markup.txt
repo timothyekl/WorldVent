@@ -1,0 +1,32 @@
+<!doctype html >
+
+<html lang="en">
+	<head >
+		<title>WorldVent Markup Standards</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../screen.css" title="WorldVent CSS" type="text/css" media="screen">
+		<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Bitter">
+         <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open%20Sans">
+	</head>
+	<body id="index">
+
+<h1><a href="/index.html">WorldVent Markup Standards</a></h1>
+
+<h2>Semantic Markup</h2>
+<p>Keep markup simple and clear. Try not to get fancy. Rely on the stylesheets to make things
+	legible.</p>
+<h2>Figure, not IMG</h2>
+<p>Prefer HTML 5 usage.</p>p>
+<h2>Measure in ems or %, not points</h2>
+<p>Try to avoid fixed sizes</p>
+
+
+<footer>
+	DRAFT: Preliminary documentation. Do not rely on this information.
+</footer>
+
+
+	</body>
+</html>
