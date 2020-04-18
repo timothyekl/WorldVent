@@ -6,6 +6,17 @@
 //  Copyright © 2017 Eastgate Systems Inc. All rights reserved.
 //
 
+// This is a Hamcrest-style family of predicates that I find makes unit tests more legible.
+//
+// They're in ObjC++, which is bad but seems unlikely to pose much difficulty. I expect they could
+// be rewritten or wrapped in Swift without much trouble; time being potentially tight, I thought it
+// best to wait to see if we need to do that.
+//
+// They also depend on std::string, but that only affects the test bundle
+
+
+
+
 #import <XCTest/XCTest.h>
 
 #import "TbxString.h"
@@ -152,28 +163,29 @@ class xExpect;
 
 
 xExpect::xExpect(const xExpect& t)
-:impl(t.impl),line(t.line),file(t.file),test(t.test),message(t.message)
+:impl(t.impl),line(t.line),file(t.file),test(t.test),message(t.message),nsfile([t.nsfile copy])
 {
     
-}
-
-xExpect::xExpect(BOOL flag,const string& inFile, NSInteger inLine,XCTestCase* inTest)
-{
-    file=inFile;
-    line=inLine;
-    test=inTest;
-    impl=[[TbxBooleanExpectation alloc] initFor: flag in: this];
 }
 
 xExpect::xExpect(BOOL flag,const xExpect* t)
 {
     file=t->file;
+    nsfile=[t->nsfile copy];
     line=t->line;
     test=t->test;
     message=t->message;
     impl=[[TbxBooleanExpectation alloc] initFor: flag in: this];
 }
 
+xExpect::xExpect(BOOL flag,NSString* infile,long inLine,XCTestCase* test )
+{
+    file=[TbxString for: infile];
+    nsfile=infile;
+    line=inLine;
+    test=test;
+    impl=[[TbxBooleanExpectation alloc] initFor: flag in: this];
+}
 
 
 
@@ -181,6 +193,7 @@ xExpect::xExpect(BOOL flag,const xExpect* t)
 xExpect::xExpect(const string& s,const xExpect* e)
 {
     file=e->file;
+    nsfile=[e->nsfile copy];
     line=e->line;
     test=e->test;
     message=e->message;
@@ -190,11 +203,20 @@ xExpect::xExpect(const string& s,const xExpect* e)
 xExpect::xExpect(const string& s,const string& inFile, NSInteger inLine,XCTestCase* inTest)
 {
     file=inFile;
+    nsfile=@(inFile.c_str());
     line=inLine;
     test=inTest;
     impl=[[TbxStringExpectation alloc] initFor: s in: this];
 }
 
+xExpect::xExpect(const string& s,NSString* inFile, NSInteger inLine,XCTestCase* inTest)
+{
+    file=[TbxString for: inFile];
+    nsfile=inFile;
+    line=inLine;
+    test=inTest;
+    impl=[[TbxStringExpectation alloc] initFor: s in: this];
+}
 
 xExpect::xExpect()
 {
@@ -248,7 +270,10 @@ xExpect xExpect::Is(const string& flag) const
     return [impl isString: flag];
 }
 
-
+xExpect xExpect::Is(NSString* flag) const
+{
+    return [impl isString: [TbxString for: flag]];
+}
 
 
 xExpect xExpect::Is(BOOL flag) const
@@ -263,10 +288,21 @@ xExpect xExpect::IsNot(const string& flag) const
     return [impl isNotString: flag];
 }
 
+xExpect xExpect::IsNot(NSString* flag) const
+{
+    return [impl isNotString: [TbxString for: flag]];
+}
+
 xExpect xExpect::BeginsWith(const string& flag) const
 {
     return [impl beginsWith: flag];
 }
+
+xExpect xExpect::BeginsWith(NSString* flag) const
+{
+    return [impl beginsWith: [TbxString for: flag]];
+}
+
 
 xExpect xExpect::EndsWith(const string& flag) const
 {
@@ -274,9 +310,18 @@ xExpect xExpect::EndsWith(const string& flag) const
 }
 
 
+xExpect xExpect::EndsWith(NSString* flag) const
+{
+    return [impl endsWith: [TbxString for: flag]];
+}
+
 xExpect xExpect::Contains(const string& flag) const
 {
     return [impl contains: flag];
+}
+xExpect xExpect::Contains(NSString* flag) const
+{
+    return [impl contains: [TbxString for: flag]];
 }
 
 
@@ -305,10 +350,6 @@ xExpect xExpect::HasSize(NSInteger n) const
     return [impl hasSize: n];
 }
 
-xExpect xExpect::HasSameParent() const
-{
-    return [impl hasSameParent];
-}
 
 
 xExpectString::xExpectString(const string& s,const string& inFile, NSInteger inLine,XCTestCase* inTest)
@@ -369,6 +410,17 @@ xExpect xExpectView::IsDisabled() const
 xExpectNumber::xExpectNumber(CGFloat f,const string& inFile, NSInteger inLine,XCTestCase* inTest)
 {
     file=inFile;
+    nsfile=@(inFile.c_str());
+    line=inLine;
+    test=inTest;
+    value=f;
+    impl=[[TbxNumericExpectation alloc] initFor: f in: this];
+}
+
+xExpectNumber::xExpectNumber(CGFloat f,NSString* inFile, NSInteger inLine,XCTestCase* inTest)
+{
+    file=[TbxString for: inFile];
+    nsfile=[inFile copy];
     line=inLine;
     test=inTest;
     value=f;
@@ -438,7 +490,14 @@ xExpect xExpectNumber::IsCloseTo(CGFloat target) const
 
 xExpectArray::xExpectArray(NSArray* inArray,const string& inFile, NSInteger inLine,XCTestCase* inTest)
 :xExpect("",inFile,inLine,inTest),val(inArray)
-{}
+{
+}
+
+xExpectArray::xExpectArray(NSArray* inArray,NSString* inFile, NSInteger inLine,XCTestCase* inTest)
+:xExpect("",inFile,inLine,inTest),val(inArray)
+{
+}
+
 
 xExpectArray::xExpectArray(NSArray *inArray,xExpect* inExpect)
 :xExpect("",inExpect),val(inArray)
@@ -651,3 +710,69 @@ xExpect xExpectArray::DoesNotHave(NSString* s) const
 
 
 @end
+
+
+
+
+
+xExpectHTML::xExpectHTML(NSString* inString,const string& inFile, NSInteger inLine,XCTestCase* inTest)
+:xExpect("",inFile,inLine,inTest),val(inString)
+{
+    NSData *data = [inString dataUsingEncoding:NSUTF8StringEncoding];
+    ns=[[NSAttributedString alloc]initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+
+}
+
+xExpectHTML::xExpectHTML(NSString* inString,NSString* inFile, NSInteger inLine,XCTestCase* inTest)
+:xExpect("",inFile,inLine,inTest),val(inString)
+{
+    NSData *data = [inString dataUsingEncoding:NSUTF8StringEncoding];
+    ns=[[NSAttributedString alloc]initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+
+}
+
+
+xExpectHTML::xExpectHTML(NSString *inString,xExpect* inExpect)
+:xExpect("",inExpect),val(inString)
+{
+    NSData *data = [inString dataUsingEncoding:NSUTF8StringEncoding];
+    ns=[[NSAttributedString alloc]initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+
+}
+
+xExpect xExpectHTML::HasLinks(NSInteger n) const
+{
+    __block NSInteger links=0;
+    [ns enumerateAttribute:NSLinkAttributeName inRange:NSMakeRange(0,ns.length)  options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+        if (value) {
+            links += 1;
+        }
+    }];
+
+    if (links!=n) {
+        message=[NSString stringWithFormat:@"expected %ld links, found %ld",n,links];
+    }
+    return xExpect(links==n,this);
+   
+}
+
+xExpect xExpectHTML::HasLinkTo(NSString* where) const   // where must inclued the leading slash
+{
+    NSURL *url=[NSURL URLWithString:where];
+    __block NSInteger found=NO;
+    [ns enumerateAttribute:NSLinkAttributeName inRange:NSMakeRange(0,ns.length)  options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+        if (value) {
+            NSURL *v=(NSURL*) value;
+            if ([url.path isEqualToString:v.path]) {
+                *stop=YES;
+                found=YES;
+            }
+        }
+    }];
+
+    if (!found) {
+        message=[NSString stringWithFormat:@"url not found"];
+    }
+    return xExpect(found,this);
+   
+}

@@ -23,10 +23,13 @@ class xExpect {
 public:
     
     xExpect();
-    xExpect(BOOL flag,const string&,NSInteger,XCTestCase* inTest);
+    xExpect(BOOL flag, NSString*,NSInteger,XCTestCase* inTest);
+
     xExpect(BOOL flag,const xExpect* that);
   
     xExpect(const string& s,const string&,NSInteger,XCTestCase* inTest);
+    xExpect(const string& s,NSString* ,NSInteger,XCTestCase* inTest);
+
     xExpect(const string& s,const xExpect*that);
     
 
@@ -41,14 +44,21 @@ public:
     xExpect IsFalse() const;
     xExpect IsNotNil() const;
     xExpect Is(const string& flag) const;
+    xExpect Is(NSString* flag) const;
+
 
     xExpect Is(BOOL flag) const;
 
     xExpect IsNot(const string& flag) const;
-    xExpect BeginsWith(const string&) const;
-    xExpect EndsWith(const string&) const;
+    xExpect IsNot(NSString* flag) const;
 
+    xExpect BeginsWith(const string&) const;
+    xExpect BeginsWith(NSString*) const;
+    xExpect EndsWith(const string&) const;
+    xExpect EndsWith(NSString*) const;
     xExpect Contains(const string&) const;
+    xExpect Contains(NSString*) const;
+
     xExpectNumber Height() const;
     xExpectNumber Width() const;
 
@@ -58,10 +68,10 @@ public:
     xExpect IsEmpty() const;
     xExpect IsNotEmpty() const;
     xExpect HasSize(NSInteger n) const;
-    xExpect HasSameParent() const;
 
     
     string file;
+    NSString* nsfile;
     NSInteger line;
     XCTestCase* test;
     mutable NSString* message;
@@ -106,6 +116,8 @@ class xExpectNumber :public xExpect
 {
 public:
     xExpectNumber(CGFloat f,const string&,NSInteger,XCTestCase* inTest);
+    xExpectNumber(CGFloat f,NSString*,NSInteger,XCTestCase* inTest);
+
     xExpectNumber(CGFloat f,const xExpect*e);
     
     xExpectNumber(const xExpectNumber& that);
@@ -128,28 +140,13 @@ private:
 
 
 
-class xExpectCommand :public xExpect
-{
-public:
-    xExpectCommand(NSObject *inObject, NSString* inSelector,const string&,NSInteger,XCTestCase* inTest);
-    xExpectCommand(NSObject *inObject, NSString* inSelector,xExpect* that);
-    xExpectCommand(NSObject *inObject, SEL inSelector,const string&,NSInteger,XCTestCase* inTest);
-    xExpectCommand(NSObject *inObject, SEL inSelector,xExpect* that);
-    
-    xExpect     Enabled() const;
-    xExpect     Disabled() const;
-
-
-private:
-    NSObject *what;
-    SEL action;
-    
-};
 
 class xExpectArray :public xExpect
 {
 public:
     xExpectArray(NSArray *,const string&,NSInteger,XCTestCase* inTest);
+    xExpectArray(NSArray *,NSString*,NSInteger,XCTestCase* inTest);
+
     xExpectArray(NSArray*,xExpect* that);
     
     xExpect Has(NSString*) const;
@@ -163,6 +160,26 @@ private:
     
 };
 
+class xExpectHTML :public xExpect
+{
+public:
+    xExpectHTML(NSString *,const string&,NSInteger,XCTestCase* inTest);
+    xExpectHTML(NSString *,NSString*,NSInteger,XCTestCase* inTest);
+
+    xExpectHTML(NSString*,xExpect* that);
+    
+    xExpect HasLinks(NSInteger n) const;
+    xExpect HasLinkTo(NSString* url) const;
+
+    
+private:
+    NSString* val;
+    NSAttributedString *ns;
+    
+};
+
+
+
 #define Expect(expr) XCTAssertTrue(expr.Finalize())
 #define ExpectNot(expr) XCTAssertTrue(!expr.FinalizeNegative())
 #define ExpectEventually(expr) XCTAssertTrue(expr.FinalizeEventually(self))
@@ -171,22 +188,10 @@ private:
 #define expect(e) xExpect(e,__FILE__, __LINE__,self)
 #define that(e) xExpect(e,__FILE__, __LINE__,self)
 
-#define thatColor(e) xExpectColor(e,__FILE__, __LINE__,self)
 #define thatString(e) xExpectString(e,__FILE__, __LINE__,self)
-#define thatNSString(e) xExpectString([TbxString for: e],__FILE__, __LINE__,self)
 
 #define thatView(e) xExpectView(e,__FILE__, __LINE__,self)
-#define thatCommand(what,s) xExpectCommand(what,s,__FILE__, __LINE__,self)
-
-
-#define expectNode(e) xExpectNode(e,__FILE__, __LINE__,self)
-#define thatNode(e) xExpectNode(e,__FILE__, __LINE__,self)
 #define expectNumber(e) xExpectNumber(e,__FILE__, __LINE__,self)
 #define thatNumber(e) xExpectNumber(e,__FILE__, __LINE__,self)
-#define thatDate(e) xExpectDate(e,__FILE__, __LINE__,self)
-#define thatMenu(e) xExpectMenu(e,__FILE__, __LINE__,self)
-#define thatLayout(e) xExpectLayoutInfo(e,__FILE__, __LINE__,self)
-#define thatAction(note,action) xExpectAction(Action::EvaluateAction(note,action),__FILE__, __LINE__,self)
-
-#define thatTable(e) xExpectTable(e,__FILE__, __LINE__,self)
 #define thatArray(e) xExpectArray(e,__FILE__, __LINE__,self)
+#define thatHTML(e) xExpectHTML(e,__FILE__, __LINE__,self)
