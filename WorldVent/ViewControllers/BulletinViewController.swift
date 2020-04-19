@@ -38,4 +38,25 @@ class BulletinViewController: UIViewController {
     
     @IBOutlet private var webView: WKWebView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let bulletin = BulletinManager.shared.latestBulletin {
+            bulletin.loadContents { (data, error) in
+                if let error = error {
+                    assertionFailure("Error loading bulletin: \(error)")
+                    fatalError("This needs better error handling!")
+                }
+                
+                guard let data = data else {
+                    assertionFailure("Received neither data nor error.")
+                    return
+                }
+                
+                // TODO: don't hardcode 'text/html'?
+                webView.load(data, mimeType: "text/html", characterEncodingName: "utf-8", baseURL: bulletin.url)
+            }
+        }
+    }
+    
 }

@@ -21,4 +21,29 @@ struct Bulletin {
         case server(URL)
     }
     var source: Source
+    
+    var url: URL {
+        let baseURL: URL
+        switch source {
+        case .cache(let url): baseURL = url
+        case .server(let url): baseURL = url
+        }
+        
+        return URL(string: metadata.url.relativeString, relativeTo: baseURL) ?? metadata.url
+    }
+    
+    func loadContents(completion: (Data?, Error?) -> Void) {
+        switch source {
+        case .cache(_):
+            do {
+                let data = try Data(contentsOf: url, options: [])
+                completion(data, nil)
+            } catch {
+                completion(nil, error)
+            }
+            
+        case .server(_):
+            fatalError("Unimplemented")
+        }
+    }
 }
