@@ -19,6 +19,7 @@
 		2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273630D2446E86000C6C935 /* BulletinManager.swift */; };
 		227363112446E8A300C6C935 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227363102446E8A300C6C935 /* Bulletin.swift */; };
 		227363132446EA4F00C6C935 /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 227363122446EA4E00C6C935 /* Documentation */; };
+		22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9005F244C0DD400A57A44 /* BulletinViewController.swift */; };
 		CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CDEDB22A2444EFA800A43BFF /* vent.jpeg */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		2273630D2446E86000C6C935 /* BulletinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinManager.swift; sourceTree = "<group>"; };
 		227363102446E8A300C6C935 /* Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		227363122446EA4E00C6C935 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
+		22D9005F244C0DD400A57A44 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			children = (
 				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
 				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
+				22D9005F244C0DD400A57A44 /* BulletinViewController.swift */,
 				2243EB042443F567005C3090 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -201,6 +204,7 @@
 				2243EAF12443EE2D005C3090 /* AppDelegate.swift in Sources */,
 				226ECBFB2446DBF600C9F201 /* GlossaryViewController.swift in Sources */,
 				2243EB052443F567005C3090 /* SettingsViewController.swift in Sources */,
+				22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

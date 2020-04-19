@@ -13,6 +13,8 @@ import Foundation
 class BulletinManager {
     static let shared = BulletinManager()
     
+    static let bulletinDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.BulletinDidChange")
+    
     private static let appBundleDirectoryPrefix = "Documentation"
     
     private(set) var latestBulletin: Bulletin?
@@ -21,7 +23,7 @@ class BulletinManager {
     
     /// Create a new ContentManager that stores its content in subdirectories of the given URL.
     private init(cacheURL: URL? = nil) {
-        let fallbackURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("content")
+        let fallbackURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
         guard let resolvedURL: URL = cacheURL ?? fallbackURL else {
             fatalError("Nowhere to store content")
         }
