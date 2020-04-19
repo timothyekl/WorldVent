@@ -17,7 +17,11 @@ class BulletinManager {
     
     private static let appBundleDirectoryPrefix = "Documentation"
     
-    private(set) var latestBulletin: Bulletin?
+    private(set) var latestBulletin: Bulletin? {
+        didSet {
+            NotificationCenter.default.post(name: Self.bulletinDidChangeNotification, object: self)
+        }
+    }
     
     private var cacheURL: URL
     
@@ -35,10 +39,15 @@ class BulletinManager {
             assertionFailure("Error reading app content from the bundle: \(error)")
         }
         
-        do {
-            try loadCachedBulletin()
-        } catch {
-            assertionFailure("Error loading bulletin from cache: \(error)")
+        // Push off loading for one run loop turn so that other observers can register, etc.
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            do {
+                self.latestBulletin = try self.loadCachedBulletin()
+            } catch {
+                assertionFailure("Error loading initial cached bulletin: \(error)")
+            }
         }
     }
     
@@ -82,14 +91,23 @@ class BulletinManager {
             fatalError("Unable to locate resources in app bundle. Check build configuration.")
         }
         
-        try FileManager.default.copyItem(at: url, to: cacheURL)
+        try FileManager.default.copyItem(at: url, to: cacheURL) // both directories, so copies contents
     }
     
     // MARK: Bulletin loading
     
+    private static let bulletinIndexSuffix = "bulletins/index.json"
+    
     /// Loads the latest bulletin from the local cache synchronously.
-    private func loadCachedBulletin() throws {
-        fatalError("Unimplemented")
+    private func loadCachedBulletin() throws -> Bulletin {
+        let indexURL = URL(fileURLWithPath: Self.bulletinIndexSuffix, relativeTo: cacheURL)
+        let indexData = try Data(contentsOf: indexURL)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let metadata = try decoder.decode(Bulletin.Metadata.self, from: indexData)
+        
+        return Bulletin(metadata: metadata, source: .cache(indexURL))
     }
 }
 

@@ -14,9 +14,11 @@ struct Bulletin {
         var url: URL
         var published: Date
     }
+    var metadata: Metadata
     
     enum Source {
-        case bundle
+        case cache(URL)
         case server(URL)
     }
+    var source: Source
 }
