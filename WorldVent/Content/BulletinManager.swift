@@ -17,6 +17,8 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     static let bulletinDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.BulletinDidChange")
     /// Indicates the bulletin metadata remains the same, but its contents have changed somehow. Notably, this is posted after downloading bulletin contents from a server.
     static let contentsDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.ContentsDidChange")
+    /// Indicates the date of the last seen bulletin has changed.
+    static let lastSeenDateDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.LastSeenDateDidChange")
     
     private static let appBundleDirectoryPrefix = "Documentation"
     
@@ -78,7 +80,7 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     // MARK: Cache management
     
     /// User defaults key for the last CFBundleVersion at which the cache was updated.
-    private static let lastCacheUpdateKey = "lastCacheUpdate"
+    private static let lastCacheUpdateKey = "LastCacheUpdate"
     
     /// Returns `true` if the existing cache can be reused for the current app, or `false` otherwise.
     private var isCacheValidForBuild: Bool {
@@ -184,6 +186,29 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     private func hashedContentsFileURL(for serverURL: URL) -> URL {
         // TODO: vary this with the actual server URL
         return cacheURL.appendingPathComponent("latest-server-bulletin").appendingPathExtension("html")
+    }
+    
+    // MARK: Last viewed bulletins
+    
+    private static let lastSeenBulletinDateKey = "LastSeenBulletinDate"
+    
+    private var lastSeenBulletinDate: Date {
+        get {
+            let timeInterval = UserDefaults.standard.double(forKey: Self.lastSeenBulletinDateKey)
+            return Date(timeIntervalSince1970: timeInterval)
+        }
+        set {
+            UserDefaults.standard.set(newValue.timeIntervalSince1970, forKey: Self.lastSeenBulletinDateKey)
+            NotificationCenter.default.post(name: Self.lastSeenDateDidChangeNotification, object: self)
+        }
+    }
+    
+    func hasSeenBulletin(at date: Date) -> Bool {
+        return date <= lastSeenBulletinDate
+    }
+    
+    func setLastSeenBulletin(_ bulletin: Bulletin) {
+        lastSeenBulletinDate = bulletin.metadata.published
     }
     
     // MARK: URLSessionDelegate

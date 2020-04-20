@@ -22,11 +22,12 @@ class BulletinNavigationController: UINavigationController {
     
     private func registerObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(bulletinDidChange(_:)), name: BulletinManager.bulletinDidChangeNotification, object: BulletinManager.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(bulletinDidChange(_:)), name: BulletinManager.lastSeenDateDidChangeNotification, object: BulletinManager.shared)
     }
     
     @objc dynamic private func bulletinDidChange(_ notification: Notification) {
         guard let bulletinManager = notification.object as? BulletinManager else { return }
-        if let _ = bulletinManager.latestBulletin {
+        if let bulletin = bulletinManager.latestBulletin, !bulletinManager.hasSeenBulletin(at: bulletin.metadata.published) {
             tabBarItem.badgeValue = "•"
         } else {
             tabBarItem.badgeValue = nil
@@ -41,8 +42,9 @@ class BulletinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let bulletin = BulletinManager.shared.latestBulletin {
-            BulletinManager.shared.loadContents(of: bulletin) { (data, error) in
+        let bulletinManager = BulletinManager.shared
+        if let bulletin = bulletinManager.latestBulletin {
+            bulletinManager.loadContents(of: bulletin) { (data, error) in
                 if let error = error {
                     assertionFailure("Error loading bulletin: \(error)")
                     fatalError("This needs better error handling!")
@@ -55,6 +57,8 @@ class BulletinViewController: UIViewController {
                 
                 // TODO: don't hardcode 'text/html'?
                 webView.load(data, mimeType: "text/html", characterEncodingName: "utf-8", baseURL: bulletin.sourceURL)
+                
+                bulletinManager.setLastSeenBulletin(bulletin)
             }
         }
     }
