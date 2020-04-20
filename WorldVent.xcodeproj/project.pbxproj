@@ -20,8 +20,22 @@
 		227363112446E8A300C6C935 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227363102446E8A300C6C935 /* Bulletin.swift */; };
 		227363132446EA4F00C6C935 /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 227363122446EA4E00C6C935 /* Documentation */; };
 		22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9005F244C0DD400A57A44 /* BulletinViewController.swift */; };
+		22D90068244D69AD00A57A44 /* WorldVentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D90067244D69AD00A57A44 /* WorldVentTests.swift */; };
+		22D90076244D69BB00A57A44 /* Expect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90071244D69BB00A57A44 /* Expect.mm */; };
+		22D90077244D69BB00A57A44 /* TbxString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90073244D69BB00A57A44 /* TbxString.mm */; };
+		22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90075244D69BB00A57A44 /* ExpectTests.mm */; };
 		CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CDEDB22A2444EFA800A43BFF /* vent.jpeg */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22D9006A244D69AD00A57A44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2243EAE52443EE2D005C3090 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2243EAEC2443EE2D005C3090;
+			remoteInfo = WorldVent;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2243EAED2443EE2D005C3090 /* WorldVent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldVent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +53,15 @@
 		227363102446E8A300C6C935 /* Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		227363122446EA4E00C6C935 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
 		22D9005F244C0DD400A57A44 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
+		22D90065244D69AD00A57A44 /* WorldVentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldVentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D90067244D69AD00A57A44 /* WorldVentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldVentTests.swift; sourceTree = "<group>"; };
+		22D90069244D69AD00A57A44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorldVentTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		22D90070244D69BB00A57A44 /* Expect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expect.h; sourceTree = "<group>"; };
+		22D90071244D69BB00A57A44 /* Expect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Expect.mm; sourceTree = "<group>"; };
+		22D90072244D69BB00A57A44 /* TbxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbxString.h; sourceTree = "<group>"; };
+		22D90073244D69BB00A57A44 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
+		22D90075244D69BB00A57A44 /* ExpectTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +75,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22D90062244D69AD00A57A44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				2243EAEF2443EE2D005C3090 /* WorldVent */,
+				22D90066244D69AD00A57A44 /* WorldVentTests */,
 				2243EAEE2443EE2D005C3090 /* Products */,
 				226ECBFC2446DD6800C9F201 /* Frameworks */,
 			);
@@ -68,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				2243EAED2443EE2D005C3090 /* WorldVent.app */,
+				22D90065244D69AD00A57A44 /* WorldVentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +157,21 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		22D90066244D69AD00A57A44 /* WorldVentTests */ = {
+			isa = PBXGroup;
+			children = (
+				22D90070244D69BB00A57A44 /* Expect.h */,
+				22D90071244D69BB00A57A44 /* Expect.mm */,
+				22D90075244D69BB00A57A44 /* ExpectTests.mm */,
+				22D90072244D69BB00A57A44 /* TbxString.h */,
+				22D90073244D69BB00A57A44 /* TbxString.mm */,
+				22D90067244D69AD00A57A44 /* WorldVentTests.swift */,
+				22D90069244D69AD00A57A44 /* Info.plist */,
+				22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */,
+			);
+			path = WorldVentTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +192,24 @@
 			productReference = 2243EAED2443EE2D005C3090 /* WorldVent.app */;
 			productType = "com.apple.product-type.application";
 		};
+		22D90064244D69AD00A57A44 /* WorldVentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22D9006E244D69AD00A57A44 /* Build configuration list for PBXNativeTarget "WorldVentTests" */;
+			buildPhases = (
+				22D90061244D69AD00A57A44 /* Sources */,
+				22D90062244D69AD00A57A44 /* Frameworks */,
+				22D90063244D69AD00A57A44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22D9006B244D69AD00A57A44 /* PBXTargetDependency */,
+			);
+			name = WorldVentTests;
+			productName = WorldVentTests;
+			productReference = 22D90065244D69AD00A57A44 /* WorldVentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -157,6 +222,11 @@
 				TargetAttributes = {
 					2243EAEC2443EE2D005C3090 = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					22D90064244D69AD00A57A44 = {
+						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
+						TestTargetID = 2243EAEC2443EE2D005C3090;
 					};
 				};
 			};
@@ -174,6 +244,7 @@
 			projectRoot = "";
 			targets = (
 				2243EAEC2443EE2D005C3090 /* WorldVent */,
+				22D90064244D69AD00A57A44 /* WorldVentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -188,6 +259,13 @@
 				CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */,
 				227363132446EA4F00C6C935 /* Documentation in Resources */,
 				2243EAF82443EE2D005C3090 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D90063244D69AD00A57A44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +286,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22D90061244D69AD00A57A44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */,
+				22D90077244D69BB00A57A44 /* TbxString.mm in Sources */,
+				22D90076244D69BB00A57A44 /* Expect.mm in Sources */,
+				22D90068244D69AD00A57A44 /* WorldVentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22D9006B244D69AD00A57A44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2243EAEC2443EE2D005C3090 /* WorldVent */;
+			targetProxy = 22D9006A244D69AD00A57A44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2243EAF62443EE2D005C3090 /* Main.storyboard */ = {
@@ -382,6 +479,51 @@
 			};
 			name = Release;
 		};
+		22D9006C244D69AD00A57A44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 888CL5L8M4;
+				INFOPLIST_FILE = WorldVentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.timekl.worldvent.WorldVentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WorldVentTests/WorldVentTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorldVent.app/WorldVent";
+			};
+			name = Debug;
+		};
+		22D9006D244D69AD00A57A44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 888CL5L8M4;
+				INFOPLIST_FILE = WorldVentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.timekl.worldvent.WorldVentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WorldVentTests/WorldVentTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorldVent.app/WorldVent";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,6 +541,15 @@
 			buildConfigurations = (
 				2243EB022443EE2F005C3090 /* Debug */,
 				2243EB032443EE2F005C3090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22D9006E244D69AD00A57A44 /* Build configuration list for PBXNativeTarget "WorldVentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D9006C244D69AD00A57A44 /* Debug */,
+				22D9006D244D69AD00A57A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
