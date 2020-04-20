@@ -10,10 +10,13 @@ import Foundation
 
 /// BulletinManager is the singleton entry point for managing "bulletin" notices from the server.
 /// It sources from both the initial set of documentation shipped in the app bundle and subsequent updates fetched from a server.
-class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
+class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDownloadDelegate, URLSessionDataDelegate {
     static let shared = BulletinManager()
     
+    /// Indicates the bulletin itself did change, in URL or publication date.
     static let bulletinDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.BulletinDidChange")
+    /// Indicates the bulletin metadata remains the same, but its contents have changed somehow. Notably, this is posted after downloading bulletin contents from a server.
+    static let contentsDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.ContentsDidChange")
     
     private static let appBundleDirectoryPrefix = "Documentation"
     
@@ -33,6 +36,7 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     private lazy var urlSessionQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.underlyingQueue = _urlSessionQueue
+        queue.maxConcurrentOperationCount = 1
         return queue
     }()
     
@@ -116,9 +120,11 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     
     // MARK: Bulletin loading
     
+    private static let bulletinServerURLString = "https://worldvent.timekl.com/"
     private static let bulletinIndexSuffix = "bulletins/index.json"
     
-    private static let bulletinServerURLString = "https://worldvent.timekl.com/"
+    private static let bulletinDownloadDescription = "com.timekl.worldvent.BulletinManager.downloadIndexJSON"
+    private static let contentsDownloadDescription = "com.timekl.worldvent.BulletinManager.downloadContents"
     
     /// Loads the latest bulletin from the local cache synchronously.
     private func loadCachedBulletin() throws -> Bulletin {
@@ -148,13 +154,14 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
             let serverURL = URL(string: Self.bulletinServerURLString)!
             let url = URL(string: Self.bulletinIndexSuffix, relativeTo: serverURL)!
             let task = self.urlSession.dataTask(with: url)
+            task.taskDescription = Self.bulletinDownloadDescription
             self.accumulatingBulletinData = Data()
             task.resume()
         }
     }
     
     func loadContents(of bulletin: Bulletin, completion: (Data?, Error?) -> Void) {
-        let contentsFileURL = contentsURL(for: bulletin)
+        let contentsFileURL = self.contentsFileURL(for: bulletin)
         assert(contentsFileURL.isFileURL)
         
         do {
@@ -165,8 +172,18 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
         }
     }
     
-    private func contentsURL(for bulletin: Bulletin) -> URL {
-        return URL(string: bulletin.metadata.url.relativeString, relativeTo: bulletin.sourceURL) ?? bulletin.metadata.url
+    private func contentsFileURL(for bulletin: Bulletin) -> URL {
+        switch bulletin.source {
+        case .cache(_):
+            return bulletin.contentsURL
+        case .server(let url):
+            return hashedContentsFileURL(for: url)
+        }
+    }
+    
+    private func hashedContentsFileURL(for serverURL: URL) -> URL {
+        // TODO: vary this with the actual server URL
+        return cacheURL.appendingPathComponent("latest-server-bulletin").appendingPathExtension("html")
     }
     
     // MARK: URLSessionDelegate
@@ -179,6 +196,10 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         dispatchPrecondition(condition: .onQueue(_urlSessionQueue))
+        
+        guard task.taskDescription == Self.bulletinDownloadDescription else {
+            return
+        }
         
         defer {
             accumulatingBulletinData = nil
@@ -193,10 +214,14 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
             let metadata = try loadBulletinMetadata(from: accumulatingBulletinData!)
             let bulletin = Bulletin(metadata: metadata, source: .server(task.originalRequest!.url!))
             
+            let contentsTask = urlSession.downloadTask(with: bulletin.contentsURL)
+            contentsTask.taskDescription = Self.contentsDownloadDescription
+            contentsTask.resume()
+            
             DispatchQueue.main.async {
                 if let current = self.latestBulletin {
                     if bulletin.metadata.published > current.metadata.published {
-//                        self.latestBulletin = bulletin
+                        self.latestBulletin = bulletin
                     }
                 } else {
                     self.latestBulletin = bulletin
@@ -213,6 +238,23 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
         dispatchPrecondition(condition: .onQueue(_urlSessionQueue))
         assert(accumulatingBulletinData != nil, "Expected to be accumulating bulletin data by the time the data task returns contents")
         accumulatingBulletinData?.append(data)
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        dispatchPrecondition(condition: .onQueue(_urlSessionQueue))
+        
+        guard downloadTask.taskDescription == Self.contentsDownloadDescription else {
+            return
+        }
+        
+        do {
+            let destinationURL = hashedContentsFileURL(for: downloadTask.originalRequest!.url!)
+            try FileManager.default.moveItem(at: location, to: destinationURL)
+            NotificationCenter.default.post(name: Self.contentsDidChangeNotification, object: self)
+        } catch {
+            // TODO: error handling? os_log?
+            return
+        }
     }
 }
 

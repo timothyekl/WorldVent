@@ -28,4 +28,8 @@ struct Bulletin {
         case .server(let url): return url
         }
     }
+    
+    var contentsURL: URL {
+        return URL(string: metadata.url.relativeString, relativeTo: sourceURL) ?? metadata.url
+    }
 }
