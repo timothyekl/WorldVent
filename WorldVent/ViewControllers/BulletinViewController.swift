@@ -42,7 +42,7 @@ class BulletinViewController: UIViewController {
         super.viewDidLoad()
         
         if let bulletin = BulletinManager.shared.latestBulletin {
-            bulletin.loadContents { (data, error) in
+            BulletinManager.shared.loadContents(of: bulletin) { (data, error) in
                 if let error = error {
                     assertionFailure("Error loading bulletin: \(error)")
                     fatalError("This needs better error handling!")
@@ -54,7 +54,7 @@ class BulletinViewController: UIViewController {
                 }
                 
                 // TODO: don't hardcode 'text/html'?
-                webView.load(data, mimeType: "text/html", characterEncodingName: "utf-8", baseURL: bulletin.url)
+                webView.load(data, mimeType: "text/html", characterEncodingName: "utf-8", baseURL: bulletin.sourceURL)
             }
         }
     }

@@ -10,7 +10,7 @@ import Foundation
 
 /// BulletinManager is the singleton entry point for managing "bulletin" notices from the server.
 /// It sources from both the initial set of documentation shipped in the app bundle and subsequent updates fetched from a server.
-class BulletinManager {
+class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
     static let shared = BulletinManager()
     
     static let bulletinDidChangeNotification = NSNotification.Name("com.timekl.worldvent.BulletinManager.BulletinDidChange")
@@ -18,12 +18,29 @@ class BulletinManager {
     private static let appBundleDirectoryPrefix = "Documentation"
     
     private(set) var latestBulletin: Bulletin? {
+        willSet {
+            dispatchPrecondition(condition: .onQueue(.main))
+        }
         didSet {
             NotificationCenter.default.post(name: Self.bulletinDidChangeNotification, object: self)
         }
     }
     
     private var cacheURL: URL
+    
+    private var _urlSessionQueue = DispatchQueue(label: "com.timekl.worldvent.BulletinManager.URLSessionQueue")
+    
+    private lazy var urlSessionQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.underlyingQueue = _urlSessionQueue
+        return queue
+    }()
+    
+    private lazy var urlSession: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: self.urlSessionQueue)
+        return session
+    }()
     
     /// Create a new ContentManager that stores its content in subdirectories of the given URL.
     private init(cacheURL: URL? = nil) {
@@ -32,6 +49,8 @@ class BulletinManager {
             fatalError("Nowhere to store content")
         }
         self.cacheURL = resolvedURL
+        
+        super.init()
         
         do {
             try populateAppContentIfNeeded()
@@ -45,6 +64,7 @@ class BulletinManager {
             
             do {
                 self.latestBulletin = try self.loadCachedBulletin()
+                self.requestServerBulletin()
             } catch {
                 assertionFailure("Error loading initial cached bulletin: \(error)")
             }
@@ -98,16 +118,101 @@ class BulletinManager {
     
     private static let bulletinIndexSuffix = "bulletins/index.json"
     
+    private static let bulletinServerURLString = "https://worldvent.timekl.com/"
+    
     /// Loads the latest bulletin from the local cache synchronously.
     private func loadCachedBulletin() throws -> Bulletin {
         let indexURL = URL(fileURLWithPath: Self.bulletinIndexSuffix, relativeTo: cacheURL)
         let indexData = try Data(contentsOf: indexURL)
-        
+        let metadata = try loadBulletinMetadata(from: indexData)
+        return Bulletin(metadata: metadata, source: .cache(indexURL))
+    }
+    
+    private func loadBulletinMetadata(from data: Data) throws -> Bulletin.Metadata {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let metadata = try decoder.decode(Bulletin.Metadata.self, from: indexData)
+        let metadata = try decoder.decode(Bulletin.Metadata.self, from: data)
+        return metadata
+    }
+    
+    /// Begins a data request to the server to get the latest bulletin JSON.
+    private func requestServerBulletin() {
+        urlSessionQueue.addOperation { [weak self] in
+            guard let self = self else { return }
+            
+            guard self.accumulatingBulletinData == nil else {
+                assertionFailure("Request already in progress")
+                return
+            }
+            
+            let serverURL = URL(string: Self.bulletinServerURLString)!
+            let url = URL(string: Self.bulletinIndexSuffix, relativeTo: serverURL)!
+            let task = self.urlSession.dataTask(with: url)
+            self.accumulatingBulletinData = Data()
+            task.resume()
+        }
+    }
+    
+    func loadContents(of bulletin: Bulletin, completion: (Data?, Error?) -> Void) {
+        let contentsFileURL = contentsURL(for: bulletin)
+        assert(contentsFileURL.isFileURL)
         
-        return Bulletin(metadata: metadata, source: .cache(indexURL))
+        do {
+            let data = try Data(contentsOf: contentsFileURL)
+            completion(data, nil)
+        } catch {
+            completion(nil, error)
+        }
+    }
+    
+    private func contentsURL(for bulletin: Bulletin) -> URL {
+        return URL(string: bulletin.metadata.url.relativeString, relativeTo: bulletin.sourceURL) ?? bulletin.metadata.url
+    }
+    
+    // MARK: URLSessionDelegate
+    
+    private var accumulatingBulletinData: Data? {
+        willSet {
+            dispatchPrecondition(condition: .onQueue(_urlSessionQueue))
+        }
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        dispatchPrecondition(condition: .onQueue(_urlSessionQueue))
+        
+        defer {
+            accumulatingBulletinData = nil
+        }
+        
+        if let error = error {
+            // TODO: error handling? os_log?
+            return
+        }
+        
+        do {
+            let metadata = try loadBulletinMetadata(from: accumulatingBulletinData!)
+            let bulletin = Bulletin(metadata: metadata, source: .server(task.originalRequest!.url!))
+            
+            DispatchQueue.main.async {
+                if let current = self.latestBulletin {
+                    if bulletin.metadata.published > current.metadata.published {
+//                        self.latestBulletin = bulletin
+                    }
+                } else {
+                    self.latestBulletin = bulletin
+                }
+            }
+        } catch {
+            // TODO: error handling? os_log?
+            assertionFailure("Unexpected JSON contents of bulletin index JSON: \(error)")
+            return
+        }
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        dispatchPrecondition(condition: .onQueue(_urlSessionQueue))
+        assert(accumulatingBulletinData != nil, "Expected to be accumulating bulletin data by the time the data task returns contents")
+        accumulatingBulletinData?.append(data)
     }
 }
 
