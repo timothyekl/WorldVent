@@ -187,6 +187,16 @@ xExpect::xExpect(BOOL flag,NSString* infile,long inLine,XCTestCase* test )
     impl=[[TbxBooleanExpectation alloc] initFor: flag in: this];
 }
 
+xExpect::xExpect(BOOL flag,const string& infile,long inLine,XCTestCase* test )
+{
+    file=infile;
+    nsfile=@(infile.c_str());
+    line=inLine;
+    test=test;
+    impl=[[TbxBooleanExpectation alloc] initFor: flag in: this];
+}
+
+
 
 
 
@@ -511,6 +521,23 @@ xExpect xExpectArray::HasSize(NSInteger n) const
     return xExpect(n==val.count,this);
 }
 
+xExpect xExpectArray::IsNotEmpty() const
+{
+    if (0==val.count) {
+        message= @"Array is empty";
+    }
+    return xExpect(0!=val.count,this);
+}
+
+
+xExpect xExpectArray::IsEmpty() const
+{
+    if (0!=val.count) {
+        message= @"Array is not empty";
+    }
+    return xExpect(0==val.count,this);
+}
+
 
 xExpect xExpectArray::Has(NSString* s) const
 {
@@ -776,3 +803,5 @@ xExpect xExpectHTML::HasLinkTo(NSString* where) const   // where must inclued th
     return xExpect(found,this);
    
 }
+
+

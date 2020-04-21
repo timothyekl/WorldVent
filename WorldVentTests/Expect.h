@@ -24,6 +24,7 @@ public:
     
     xExpect();
     xExpect(BOOL flag, NSString*,NSInteger,XCTestCase* inTest);
+    xExpect(BOOL flag, const string&,NSInteger,XCTestCase* inTest);
 
     xExpect(BOOL flag,const xExpect* that);
   
@@ -151,7 +152,8 @@ public:
     
     xExpect Has(NSString*) const;
     xExpect DoesNotHave(NSString*) const;
-
+    xExpect IsEmpty() const;
+    xExpect IsNotEmpty() const;
     xExpect HasSize(NSInteger n) const;
 
     

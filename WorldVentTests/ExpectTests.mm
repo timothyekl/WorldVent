@@ -95,13 +95,4 @@ using namespace std;
     Expect(thatArray(a).DoesNotHave(@"literary merit"));
 }
 
-- (void) testHTMLHasLinks
-{
-    NSString* ns=@"<a href=\"a.html\">foo</a> bar <a href=\"b.html\">buzz</a>";
-    Expect(thatHTML(ns).HasLinks(2));
-    
-    Expect(thatHTML(ns).HasLinkTo(@"/a.html"));
-}
- 
-
 @end
