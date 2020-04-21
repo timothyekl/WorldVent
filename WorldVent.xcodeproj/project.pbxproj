@@ -16,13 +16,6 @@
 		226ECBFB2446DBF600C9F201 /* GlossaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */; };
 		226ECBFE2446DD6800C9F201 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ECBFD2446DD6800C9F201 /* WebKit.framework */; };
 		226ECC002446DD7A00C9F201 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226ECBFF2446DD7A00C9F201 /* UIKit.framework */; };
-		CD2D01C5244E120100C06651 /* HTMLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2D01C4244E120100C06651 /* HTMLFile.m */; };
-		CD2D01C7244E12DB00C06651 /* HTMLTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD2D01C6244E12DB00C06651 /* HTMLTests.mm */; };
-		CD978683244B708E00D6B093 /* WorldVentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD978682244B708E00D6B093 /* WorldVentTests.m */; };
-		CD97868C244B70E600D6B093 /* Expect.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD97868A244B70E600D6B093 /* Expect.mm */; };
-		CD97868F244B735A00D6B093 /* TbxString.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD97868E244B735A00D6B093 /* TbxString.mm */; };
-		CD978691244B762100D6B093 /* ExpectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD978690244B762100D6B093 /* ExpectTests.mm */; };
-		CD97869A244BB7C900D6B093 /* doc in Resources */ = {isa = PBXBuildFile; fileRef = CD978699244BB7C800D6B093 /* doc */; };
 		2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273630D2446E86000C6C935 /* BulletinManager.swift */; };
 		227363112446E8A300C6C935 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227363102446E8A300C6C935 /* Bulletin.swift */; };
 		227363132446EA4F00C6C935 /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 227363122446EA4E00C6C935 /* Documentation */; };
@@ -31,6 +24,7 @@
 		22D90076244D69BB00A57A44 /* Expect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90071244D69BB00A57A44 /* Expect.mm */; };
 		22D90077244D69BB00A57A44 /* TbxString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90073244D69BB00A57A44 /* TbxString.mm */; };
 		22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90075244D69BB00A57A44 /* ExpectTests.mm */; };
+		CD97869A244BB7C900D6B093 /* doc in Resources */ = {isa = PBXBuildFile; fileRef = CD978699244BB7C800D6B093 /* doc */; };
 		CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CDEDB22A2444EFA800A43BFF /* vent.jpeg */; };
 /* End PBXBuildFile section */
 
@@ -56,18 +50,6 @@
 		226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossaryViewController.swift; sourceTree = "<group>"; };
 		226ECBFD2446DD6800C9F201 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		226ECBFF2446DD7A00C9F201 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CD2D01C3244E120100C06651 /* HTMLFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLFile.h; sourceTree = "<group>"; };
-		CD2D01C4244E120100C06651 /* HTMLFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLFile.m; sourceTree = "<group>"; };
-		CD2D01C6244E12DB00C06651 /* HTMLTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HTMLTests.mm; sourceTree = "<group>"; };
-		CD978680244B708E00D6B093 /* WorldVentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldVentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD978682244B708E00D6B093 /* WorldVentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldVentTests.m; sourceTree = "<group>"; };
-		CD978684244B708E00D6B093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD97868A244B70E600D6B093 /* Expect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Expect.mm; sourceTree = "<group>"; };
-		CD97868B244B70E600D6B093 /* Expect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expect.h; sourceTree = "<group>"; };
-		CD97868D244B735A00D6B093 /* TbxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbxString.h; sourceTree = "<group>"; };
-		CD97868E244B735A00D6B093 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
-		CD978690244B762100D6B093 /* ExpectTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
-		CD978699244BB7C800D6B093 /* doc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = doc; sourceTree = "<group>"; };
 		2273630D2446E86000C6C935 /* BulletinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinManager.swift; sourceTree = "<group>"; };
 		227363102446E8A300C6C935 /* Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		227363122446EA4E00C6C935 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
@@ -81,6 +63,7 @@
 		22D90072244D69BB00A57A44 /* TbxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbxString.h; sourceTree = "<group>"; };
 		22D90073244D69BB00A57A44 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
 		22D90075244D69BB00A57A44 /* ExpectTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
+		CD978699244BB7C800D6B093 /* doc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = doc; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,16 +154,6 @@
 		2273630F2446E89600C6C935 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				CD978682244B708E00D6B093 /* WorldVentTests.m */,
-				CD978690244B762100D6B093 /* ExpectTests.mm */,
-				CD2D01C6244E12DB00C06651 /* HTMLTests.mm */,
-				CD97868B244B70E600D6B093 /* Expect.h */,
-				CD97868A244B70E600D6B093 /* Expect.mm */,
-				CD97868D244B735A00D6B093 /* TbxString.h */,
-				CD97868E244B735A00D6B093 /* TbxString.mm */,
-				CD2D01C3244E120100C06651 /* HTMLFile.h */,
-				CD2D01C4244E120100C06651 /* HTMLFile.m */,
-				CD978684244B708E00D6B093 /* Info.plist */,
 				2273630D2446E86000C6C935 /* BulletinManager.swift */,
 				227363102446E8A300C6C935 /* Bulletin.swift */,
 			);
@@ -321,12 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD2D01C5244E120100C06651 /* HTMLFile.m in Sources */,
-				CD978691244B762100D6B093 /* ExpectTests.mm in Sources */,
-				CD97868F244B735A00D6B093 /* TbxString.mm in Sources */,
-				CD97868C244B70E600D6B093 /* Expect.mm in Sources */,
-				CD2D01C7244E12DB00C06651 /* HTMLTests.mm in Sources */,
-				CD978683244B708E00D6B093 /* WorldVentTests.m in Sources */,
 				22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */,
 				22D90077244D69BB00A57A44 /* TbxString.mm in Sources */,
 				22D90076244D69BB00A57A44 /* Expect.mm in Sources */,
