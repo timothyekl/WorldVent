@@ -23,10 +23,12 @@ struct Bulletin {
     var source: Source
     
     var sourceURL: URL {
+        let url: URL
         switch source {
-        case .cache(let url): return url
-        case .server(let url): return url
+        case .cache(let u): url = u
+        case .server(let u): url = u
         }
+        return url.absoluteURL
     }
     
     var contentsURL: URL {

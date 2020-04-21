@@ -12,17 +12,26 @@ import WebKit
 class BulletinNavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
-        registerObservers()
+        setUpBulletinManager()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        registerObservers()
+        setUpBulletinManager()
     }
     
-    private func registerObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(bulletinDidChange(_:)), name: BulletinManager.bulletinDidChangeNotification, object: BulletinManager.shared)
-        NotificationCenter.default.addObserver(self, selector: #selector(bulletinDidChange(_:)), name: BulletinManager.lastSeenDateDidChangeNotification, object: BulletinManager.shared)
+    private func setUpBulletinManager() {
+        let manager = BulletinManager.shared
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(bulletinDidChange(_:)), name: BulletinManager.bulletinDidChangeNotification, object: manager)
+        NotificationCenter.default.addObserver(self, selector: #selector(bulletinDidChange(_:)), name: BulletinManager.lastSeenDateDidChangeNotification, object: manager)
+        
+        do {
+            try manager.loadCachedBulletin()
+        } catch {
+            // TODO: error handling? os_log?
+        }
+        manager.requestServerBulletin()
     }
     
     @objc dynamic private func bulletinDidChange(_ notification: Notification) {

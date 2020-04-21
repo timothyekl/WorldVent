@@ -17,7 +17,7 @@ class BulletinTests: XCTestCase {
     }
     
     private var bulletinIndexCacheURL: URL {
-        return temporaryCacheURL.appendingPathComponent("index").appendingPathExtension("json")
+        return temporaryCacheURL.appendingPathComponent("bulletins").appendingPathComponent("index").appendingPathExtension("json")
     }
     
     private var bulletinIndexServerURL: URL {
@@ -27,12 +27,8 @@ class BulletinTests: XCTestCase {
     private var bulletinContentsURL: URL {
         return URL(string: "https://example.com/index.html")!
     }
-
-    override func setUpWithError() throws {
-    }
-
-    override func tearDownWithError() throws {
-    }
+    
+    private var bulletinManager: BulletinManager!
 
     // MARK: Bulletin URL proxy accessors
     
@@ -50,6 +46,20 @@ class BulletinTests: XCTestCase {
         
         XCTAssertEqual(bulletinIndexServerURL, bulletin.sourceURL)
         XCTAssertEqual(bulletinContentsURL, bulletin.contentsURL)
+    }
+    
+    // MARK: Bulletin manager cache
+    
+    func testBulletinManagerLoadsCache() throws {
+        let manager = BulletinManager(cacheURL: temporaryCacheURL)
+        let bulletinChangeExpectation = self.expectation(forNotification: BulletinManager.bulletinDidChangeNotification, object: manager, handler: nil)
+        
+        try manager.loadCachedBulletin()
+        wait(for: [bulletinChangeExpectation], timeout: 1)
+        
+        let latest = manager.latestBulletin
+        XCTAssertEqual(bulletinIndexCacheURL, latest?.sourceURL)
+        // cannot assert about contents URL, since it won't be on a server like we expect
     }
 
 }

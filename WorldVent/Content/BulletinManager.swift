@@ -49,7 +49,7 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     }()
     
     /// Create a new ContentManager that stores its content in subdirectories of the given URL.
-    private init(cacheURL: URL? = nil) {
+    init(cacheURL: URL? = nil) {
         let fallbackURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
         guard let resolvedURL: URL = cacheURL ?? fallbackURL else {
             fatalError("Nowhere to store content")
@@ -62,18 +62,6 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
             try populateAppContentIfNeeded()
         } catch {
             assertionFailure("Error reading app content from the bundle: \(error)")
-        }
-        
-        // Push off loading for one run loop turn so that other observers can register, etc.
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            
-            do {
-                self.latestBulletin = try self.loadCachedBulletin()
-                self.requestServerBulletin()
-            } catch {
-                assertionFailure("Error loading initial cached bulletin: \(error)")
-            }
         }
     }
     
@@ -129,11 +117,11 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     private static let contentsDownloadDescription = "com.timekl.worldvent.BulletinManager.downloadContents"
     
     /// Loads the latest bulletin from the local cache synchronously.
-    private func loadCachedBulletin() throws -> Bulletin {
+    func loadCachedBulletin() throws {
         let indexURL = URL(fileURLWithPath: Self.bulletinIndexSuffix, relativeTo: cacheURL)
         let indexData = try Data(contentsOf: indexURL)
         let metadata = try loadBulletinMetadata(from: indexData)
-        return Bulletin(metadata: metadata, source: .cache(indexURL))
+        self.latestBulletin = Bulletin(metadata: metadata, source: .cache(indexURL))
     }
     
     private func loadBulletinMetadata(from data: Data) throws -> Bulletin.Metadata {
@@ -144,7 +132,7 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     }
     
     /// Begins a data request to the server to get the latest bulletin JSON.
-    private func requestServerBulletin() {
+    func requestServerBulletin() {
         urlSessionQueue.addOperation { [weak self] in
             guard let self = self else { return }
             
