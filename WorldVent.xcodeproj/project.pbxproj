@@ -23,11 +23,19 @@
 		CD97868F244B735A00D6B093 /* TbxString.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD97868E244B735A00D6B093 /* TbxString.mm */; };
 		CD978691244B762100D6B093 /* ExpectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD978690244B762100D6B093 /* ExpectTests.mm */; };
 		CD97869A244BB7C900D6B093 /* doc in Resources */ = {isa = PBXBuildFile; fileRef = CD978699244BB7C800D6B093 /* doc */; };
+		2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273630D2446E86000C6C935 /* BulletinManager.swift */; };
+		227363112446E8A300C6C935 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227363102446E8A300C6C935 /* Bulletin.swift */; };
+		227363132446EA4F00C6C935 /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 227363122446EA4E00C6C935 /* Documentation */; };
+		22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9005F244C0DD400A57A44 /* BulletinViewController.swift */; };
+		22D90068244D69AD00A57A44 /* BulletinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D90067244D69AD00A57A44 /* BulletinTests.swift */; };
+		22D90076244D69BB00A57A44 /* Expect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90071244D69BB00A57A44 /* Expect.mm */; };
+		22D90077244D69BB00A57A44 /* TbxString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90073244D69BB00A57A44 /* TbxString.mm */; };
+		22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90075244D69BB00A57A44 /* ExpectTests.mm */; };
 		CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CDEDB22A2444EFA800A43BFF /* vent.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CD978685244B708E00D6B093 /* PBXContainerItemProxy */ = {
+		22D9006A244D69AD00A57A44 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2243EAE52443EE2D005C3090 /* Project object */;
 			proxyType = 1;
@@ -60,6 +68,19 @@
 		CD97868E244B735A00D6B093 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
 		CD978690244B762100D6B093 /* ExpectTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
 		CD978699244BB7C800D6B093 /* doc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = doc; sourceTree = "<group>"; };
+		2273630D2446E86000C6C935 /* BulletinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinManager.swift; sourceTree = "<group>"; };
+		227363102446E8A300C6C935 /* Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
+		227363122446EA4E00C6C935 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
+		22D9005F244C0DD400A57A44 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
+		22D90065244D69AD00A57A44 /* WorldVentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldVentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D90067244D69AD00A57A44 /* BulletinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinTests.swift; sourceTree = "<group>"; };
+		22D90069244D69AD00A57A44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorldVentTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		22D90070244D69BB00A57A44 /* Expect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expect.h; sourceTree = "<group>"; };
+		22D90071244D69BB00A57A44 /* Expect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Expect.mm; sourceTree = "<group>"; };
+		22D90072244D69BB00A57A44 /* TbxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbxString.h; sourceTree = "<group>"; };
+		22D90073244D69BB00A57A44 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
+		22D90075244D69BB00A57A44 /* ExpectTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +94,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD97867D244B708E00D6B093 /* Frameworks */ = {
+		22D90062244D69AD00A57A44 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				2243EAEF2443EE2D005C3090 /* WorldVent */,
-				CD978681244B708E00D6B093 /* WorldVentTests */,
+				22D90066244D69AD00A57A44 /* WorldVentTests */,
 				2243EAEE2443EE2D005C3090 /* Products */,
 				226ECBFC2446DD6800C9F201 /* Frameworks */,
 			);
@@ -97,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				2243EAED2443EE2D005C3090 /* WorldVent.app */,
-				CD978680244B708E00D6B093 /* WorldVentTests.xctest */,
+				22D90065244D69AD00A57A44 /* WorldVentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,9 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				2243EAF02443EE2D005C3090 /* AppDelegate.swift */,
-				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
-				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
-				2243EB042443F567005C3090 /* SettingsViewController.swift */,
+				2273630F2446E89600C6C935 /* Content */,
+				226ECC022446E79F00C9F201 /* ViewControllers */,
 				226ECC012446DDF600C9F201 /* Assets */,
 				2243EAFE2443EE2F005C3090 /* Info.plist */,
 			);
@@ -127,6 +147,7 @@
 		226ECC012446DDF600C9F201 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				227363122446EA4E00C6C935 /* Documentation */,
 				2243EAF62443EE2D005C3090 /* Main.storyboard */,
 				2243EAF92443EE2F005C3090 /* Assets.xcassets */,
 				2243EAFB2443EE2F005C3090 /* LaunchScreen.storyboard */,
@@ -136,7 +157,18 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		CD978681244B708E00D6B093 /* WorldVentTests */ = {
+		226ECC022446E79F00C9F201 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
+				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
+				22D9005F244C0DD400A57A44 /* BulletinViewController.swift */,
+				2243EB042443F567005C3090 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2273630F2446E89600C6C935 /* Content */ = {
 			isa = PBXGroup;
 			children = (
 				CD978682244B708E00D6B093 /* WorldVentTests.m */,
@@ -149,6 +181,23 @@
 				CD2D01C3244E120100C06651 /* HTMLFile.h */,
 				CD2D01C4244E120100C06651 /* HTMLFile.m */,
 				CD978684244B708E00D6B093 /* Info.plist */,
+				2273630D2446E86000C6C935 /* BulletinManager.swift */,
+				227363102446E8A300C6C935 /* Bulletin.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		22D90066244D69AD00A57A44 /* WorldVentTests */ = {
+			isa = PBXGroup;
+			children = (
+				22D90070244D69BB00A57A44 /* Expect.h */,
+				22D90071244D69BB00A57A44 /* Expect.mm */,
+				22D90075244D69BB00A57A44 /* ExpectTests.mm */,
+				22D90072244D69BB00A57A44 /* TbxString.h */,
+				22D90073244D69BB00A57A44 /* TbxString.mm */,
+				22D90067244D69AD00A57A44 /* BulletinTests.swift */,
+				22D90069244D69AD00A57A44 /* Info.plist */,
+				22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */,
 			);
 			path = WorldVentTests;
 			sourceTree = "<group>";
@@ -173,22 +222,22 @@
 			productReference = 2243EAED2443EE2D005C3090 /* WorldVent.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CD97867F244B708E00D6B093 /* WorldVentTests */ = {
+		22D90064244D69AD00A57A44 /* WorldVentTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD978689244B708E00D6B093 /* Build configuration list for PBXNativeTarget "WorldVentTests" */;
+			buildConfigurationList = 22D9006E244D69AD00A57A44 /* Build configuration list for PBXNativeTarget "WorldVentTests" */;
 			buildPhases = (
-				CD97867C244B708E00D6B093 /* Sources */,
-				CD97867D244B708E00D6B093 /* Frameworks */,
-				CD97867E244B708E00D6B093 /* Resources */,
+				22D90061244D69AD00A57A44 /* Sources */,
+				22D90062244D69AD00A57A44 /* Frameworks */,
+				22D90063244D69AD00A57A44 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CD978686244B708E00D6B093 /* PBXTargetDependency */,
+				22D9006B244D69AD00A57A44 /* PBXTargetDependency */,
 			);
 			name = WorldVentTests;
 			productName = WorldVentTests;
-			productReference = CD978680244B708E00D6B093 /* WorldVentTests.xctest */;
+			productReference = 22D90065244D69AD00A57A44 /* WorldVentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -204,8 +253,9 @@
 					2243EAEC2443EE2D005C3090 = {
 						CreatedOnToolsVersion = 11.4;
 					};
-					CD97867F244B708E00D6B093 = {
+					22D90064244D69AD00A57A44 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 						TestTargetID = 2243EAEC2443EE2D005C3090;
 					};
 				};
@@ -224,7 +274,7 @@
 			projectRoot = "";
 			targets = (
 				2243EAEC2443EE2D005C3090 /* WorldVent */,
-				CD97867F244B708E00D6B093 /* WorldVentTests */,
+				22D90064244D69AD00A57A44 /* WorldVentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,11 +288,12 @@
 				2243EAFD2443EE2F005C3090 /* LaunchScreen.storyboard in Resources */,
 				2243EAFA2443EE2F005C3090 /* Assets.xcassets in Resources */,
 				CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */,
+				227363132446EA4F00C6C935 /* Documentation in Resources */,
 				2243EAF82443EE2D005C3090 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD97867E244B708E00D6B093 /* Resources */ = {
+		22D90063244D69AD00A57A44 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,13 +308,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2243EAF52443EE2D005C3090 /* VentilatorViewController.swift in Sources */,
+				2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */,
+				227363112446E8A300C6C935 /* Bulletin.swift in Sources */,
 				2243EAF12443EE2D005C3090 /* AppDelegate.swift in Sources */,
 				226ECBFB2446DBF600C9F201 /* GlossaryViewController.swift in Sources */,
 				2243EB052443F567005C3090 /* SettingsViewController.swift in Sources */,
+				22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD97867C244B708E00D6B093 /* Sources */ = {
+		22D90061244D69AD00A57A44 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,16 +327,20 @@
 				CD97868C244B70E600D6B093 /* Expect.mm in Sources */,
 				CD2D01C7244E12DB00C06651 /* HTMLTests.mm in Sources */,
 				CD978683244B708E00D6B093 /* WorldVentTests.m in Sources */,
+				22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */,
+				22D90077244D69BB00A57A44 /* TbxString.mm in Sources */,
+				22D90076244D69BB00A57A44 /* Expect.mm in Sources */,
+				22D90068244D69AD00A57A44 /* BulletinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CD978686244B708E00D6B093 /* PBXTargetDependency */ = {
+		22D9006B244D69AD00A57A44 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2243EAEC2443EE2D005C3090 /* WorldVent */;
-			targetProxy = CD978685244B708E00D6B093 /* PBXContainerItemProxy */;
+			targetProxy = 22D9006A244D69AD00A57A44 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -458,41 +516,46 @@
 			};
 			name = Release;
 		};
-		CD978687244B708E00D6B093 /* Debug */ = {
+		22D9006C244D69AD00A57A44 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5YSX9CC6H;
+				DEVELOPMENT_TEAM = 888CL5L8M4;
 				INFOPLIST_FILE = WorldVentTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eastgate.WorldVentTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timekl.worldvent.WorldVentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WorldVentTests/WorldVentTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorldVent.app/WorldVent";
 			};
 			name = Debug;
 		};
-		CD978688244B708E00D6B093 /* Release */ = {
+		22D9006D244D69AD00A57A44 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5YSX9CC6H;
+				DEVELOPMENT_TEAM = 888CL5L8M4;
 				INFOPLIST_FILE = WorldVentTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eastgate.WorldVentTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timekl.worldvent.WorldVentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WorldVentTests/WorldVentTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorldVent.app/WorldVent";
 			};
@@ -519,11 +582,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD978689244B708E00D6B093 /* Build configuration list for PBXNativeTarget "WorldVentTests" */ = {
+		22D9006E244D69AD00A57A44 /* Build configuration list for PBXNativeTarget "WorldVentTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD978687244B708E00D6B093 /* Debug */,
-				CD978688244B708E00D6B093 /* Release */,
+				22D9006C244D69AD00A57A44 /* Debug */,
+				22D9006D244D69AD00A57A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

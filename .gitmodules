@@ -1,0 +1,3 @@
+[submodule "WorldVent/Assets/Documentation"]
+	path = WorldVent/Assets/Documentation
+	url = https://github.com/timothyekl/WorldVent-Documentation.git
