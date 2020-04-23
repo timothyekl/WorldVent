@@ -24,7 +24,9 @@
 		22D90076244D69BB00A57A44 /* Expect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90071244D69BB00A57A44 /* Expect.mm */; };
 		22D90077244D69BB00A57A44 /* TbxString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90073244D69BB00A57A44 /* TbxString.mm */; };
 		22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D90075244D69BB00A57A44 /* ExpectTests.mm */; };
-		CD97869A244BB7C900D6B093 /* doc in Resources */ = {isa = PBXBuildFile; fileRef = CD978699244BB7C800D6B093 /* doc */; };
+		CD15B48A2450CBDC0040DBE9 /* doc in Resources */ = {isa = PBXBuildFile; fileRef = CD15B4892450CBDC0040DBE9 /* doc */; };
+		CDD7C25E2450C93A00CB08B1 /* HTMLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C25C2450C93A00CB08B1 /* HTMLFile.m */; };
+		CDD7C25F2450C93A00CB08B1 /* HTMLTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C25D2450C93A00CB08B1 /* HTMLTests.mm */; };
 		CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CDEDB22A2444EFA800A43BFF /* vent.jpeg */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +65,10 @@
 		22D90072244D69BB00A57A44 /* TbxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbxString.h; sourceTree = "<group>"; };
 		22D90073244D69BB00A57A44 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
 		22D90075244D69BB00A57A44 /* ExpectTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
-		CD978699244BB7C800D6B093 /* doc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = doc; sourceTree = "<group>"; };
+		CD15B4892450CBDC0040DBE9 /* doc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = doc; path = WorldVent/Assets/Base.lproj/doc; sourceTree = SOURCE_ROOT; };
+		CDD7C25B2450C93A00CB08B1 /* HTMLFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLFile.h; sourceTree = "<group>"; };
+		CDD7C25C2450C93A00CB08B1 /* HTMLFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLFile.m; sourceTree = "<group>"; };
+		CDD7C25D2450C93A00CB08B1 /* HTMLTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HTMLTests.mm; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +140,7 @@
 				2243EAF92443EE2F005C3090 /* Assets.xcassets */,
 				2243EAFB2443EE2F005C3090 /* LaunchScreen.storyboard */,
 				CDEDB22A2444EFA800A43BFF /* vent.jpeg */,
-				CD978699244BB7C800D6B093 /* doc */,
+				CD15B4892450CBDC0040DBE9 /* doc */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -168,6 +173,9 @@
 				22D90075244D69BB00A57A44 /* ExpectTests.mm */,
 				22D90072244D69BB00A57A44 /* TbxString.h */,
 				22D90073244D69BB00A57A44 /* TbxString.mm */,
+				CDD7C25B2450C93A00CB08B1 /* HTMLFile.h */,
+				CDD7C25C2450C93A00CB08B1 /* HTMLFile.m */,
+				CDD7C25D2450C93A00CB08B1 /* HTMLTests.mm */,
 				22D90067244D69AD00A57A44 /* BulletinTests.swift */,
 				22D90069244D69AD00A57A44 /* Info.plist */,
 				22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */,
@@ -257,10 +265,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD97869A244BB7C900D6B093 /* doc in Resources */,
 				2243EAFD2443EE2F005C3090 /* LaunchScreen.storyboard in Resources */,
 				2243EAFA2443EE2F005C3090 /* Assets.xcassets in Resources */,
 				CDEDB22B2444EFA800A43BFF /* vent.jpeg in Resources */,
+				CD15B48A2450CBDC0040DBE9 /* doc in Resources */,
 				227363132446EA4F00C6C935 /* Documentation in Resources */,
 				2243EAF82443EE2D005C3090 /* Main.storyboard in Resources */,
 			);
@@ -294,9 +302,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD7C25E2450C93A00CB08B1 /* HTMLFile.m in Sources */,
 				22D90079244D69BB00A57A44 /* ExpectTests.mm in Sources */,
 				22D90077244D69BB00A57A44 /* TbxString.mm in Sources */,
 				22D90076244D69BB00A57A44 /* Expect.mm in Sources */,
+				CDD7C25F2450C93A00CB08B1 /* HTMLTests.mm in Sources */,
 				22D90068244D69AD00A57A44 /* BulletinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

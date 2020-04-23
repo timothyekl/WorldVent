@@ -65,7 +65,6 @@
         HTMLFile *f=[[HTMLFile alloc]initFor: path];
         Expect(that([f exists]));
     }
-
 }
 
 

@@ -30,9 +30,7 @@
 
 - (NSString*) filePath
 {
-    NSString *base=[[NSBundle mainBundle] resourcePath];
-    NSString *path=[base stringByAppendingString: @"/doc"];
-    path=[path stringByAppendingString: self.path];
+    NSString *path=[[NSBundle mainBundle]pathForResource: [self.path stringByDeletingPathExtension] ofType:@"html" inDirectory: @"doc"];
     return path;
 }
 
@@ -89,7 +87,6 @@
            }
        }];
     return [result allObjects];
-  
 }
  
 
