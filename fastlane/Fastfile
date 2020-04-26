@@ -1,0 +1,51 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+def require_env(key, desc)
+  value = ENV[key]
+  return value if value
+  UI.user_error! "Environment missing required value for '#{key}'. This value is #{desc}."
+end
+
+platform :ios do
+  desc "Build the app"
+  lane :build do
+    ci = is_ci
+
+    team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+    match_repo = require_env("MATCH_REPO", "the Git repository containing match certificates")
+
+    match(
+      type: "appstore",
+      readonly: ci,
+      team_id: team_id,
+      git_url: match_repo,
+    )
+
+    if ci
+      update_project_provisioning(
+        target_filter: "WorldVent",
+        build_configuration: "Release",
+        code_signing_identity: "Apple Distribution:",
+      )
+    end
+
+    build_app(
+      scheme: "WorldVent",
+    )
+  end
+end
