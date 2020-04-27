@@ -70,6 +70,17 @@ platform :ios do
     end
     match(match_params)
 
+    if ci
+      profile_key = "sigh_#{app_id}_#{match_type}_profile-path"
+      profile_path = require_env(profile_key, "the path to the provisioning profile")
+      update_project_provisioning(
+        profile: profile_path,
+        target_filter: "WorldVent",
+        build_configuration: "Release",
+        code_signing_identity: "Apple Distribution:",
+      )
+    end
+
     build_app(
       scheme: "WorldVent",
     )
