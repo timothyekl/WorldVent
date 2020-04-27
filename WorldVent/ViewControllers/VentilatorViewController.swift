@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import WebKit
 
 class VentilatorViewController: UIViewController {
+    @IBOutlet var webView: WKWebView!
 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let f=HTFile(path:"doc/index.html");
+        self.webView.loadHTMLString(f.html, baseURL: f.url);
     }
-
 
 }
 

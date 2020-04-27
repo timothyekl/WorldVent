@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bw1-Qh-KOv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bw1-Qh-KOv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,20 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vent.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="u4E-TM-gxG">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j78-Eo-K5o">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="u4E-TM-gxG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6ki-LA-Bxj"/>
-                            <constraint firstItem="u4E-TM-gxG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CgO-WC-Oae"/>
-                            <constraint firstItem="u4E-TM-gxG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EYR-gw-mwO"/>
-                            <constraint firstItem="u4E-TM-gxG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XwR-mC-W4X"/>
+                            <constraint firstItem="j78-Eo-K5o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="906-YH-w1j"/>
+                            <constraint firstItem="j78-Eo-K5o" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OUI-0b-sW7"/>
+                            <constraint firstItem="j78-Eo-K5o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bbC-F4-T2o"/>
+                            <constraint firstItem="j78-Eo-K5o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uD2-LX-FWS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ventilator" id="N8O-QS-4kI"/>
+                    <connections>
+                        <outlet property="webView" destination="j78-Eo-K5o" id="6tq-13-iaI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,10 +79,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="67j-ir-Pjh" firstAttribute="top" secondItem="KJk-n3-W5y" secondAttribute="top" id="0jk-4o-6IJ"/>
+                            <constraint firstItem="67j-ir-Pjh" firstAttribute="leading" secondItem="OmW-d1-ZgN" secondAttribute="leading" id="Bai-nj-Zf9"/>
                             <constraint firstItem="67j-ir-Pjh" firstAttribute="top" secondItem="KJk-n3-W5y" secondAttribute="top" id="XO0-li-xQZ"/>
                             <constraint firstItem="67j-ir-Pjh" firstAttribute="leading" secondItem="OmW-d1-ZgN" secondAttribute="leading" id="ZJ0-6o-AXR"/>
                             <constraint firstAttribute="bottom" secondItem="67j-ir-Pjh" secondAttribute="bottom" id="cte-yC-obT"/>
+                            <constraint firstItem="67j-ir-Pjh" firstAttribute="trailing" secondItem="OmW-d1-ZgN" secondAttribute="trailing" id="jna-Z3-2R1"/>
                             <constraint firstItem="67j-ir-Pjh" firstAttribute="trailing" secondItem="OmW-d1-ZgN" secondAttribute="trailing" id="lIr-ZR-cFr"/>
+                            <constraint firstAttribute="bottom" secondItem="67j-ir-Pjh" secondAttribute="bottom" id="lul-5j-xHg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OmW-d1-ZgN"/>
                     </view>
@@ -248,7 +260,4 @@
             <point key="canvasLocation" x="-458" y="1124"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="vent.jpeg" width="720" height="405"/>
-    </resources>
 </document>

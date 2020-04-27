@@ -11,4 +11,11 @@ import WebKit
 
 class GlossaryViewController: UIViewController {
     @IBOutlet var webView: WKWebView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let f=HTFile(path:"index.html");
+        self.webView.loadHTMLString(f.html, baseURL: f.url);
+    }
 }
