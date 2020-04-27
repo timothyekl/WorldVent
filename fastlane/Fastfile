@@ -33,6 +33,7 @@ platform :ios do
     ci = is_ci
 
     # Fetch some local signing variables
+    app_id = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
     match_repo = require_env("MATCH_REPO", "the Git repository containing match certificates")
     keychain_name = "worldvent_ci_keychain"
@@ -51,8 +52,9 @@ platform :ios do
     end
 
     # Get code signing bits decrypted & located
+    match_type = "appstore"
     match_params = {
-      type: "appstore",
+      type: match_type,
       readonly: ci,
       team_id: team_id,
       git_url: match_repo,
@@ -69,7 +71,10 @@ platform :ios do
     match(match_params)
 
     if ci
+      profile_key = "sigh_#{app_id}_#{match_type}_profile-path"
+      profile_path = require_env(profile_key, "the path to the provisioning profile")
       update_project_provisioning(
+        profile: profile_path,
         target_filter: "WorldVent",
         build_configuration: "Release",
         code_signing_identity: "Apple Distribution:",
