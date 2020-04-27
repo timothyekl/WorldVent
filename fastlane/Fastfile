@@ -34,6 +34,7 @@ platform :ios do
       readonly: ci,
       team_id: team_id,
       git_url: match_repo,
+      shallow_clone: ci,
     )
 
     if ci
