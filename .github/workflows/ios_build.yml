@@ -23,3 +23,10 @@ jobs:
       run: |
         fastlane build --verbose
 
+    # Uploads the built IPA to GitHub
+    - name: Upload built IPA
+      uses: actions/upload-artifact@v1
+      with:
+        name: WorldVent
+        path: WorldVent.ipa
+
