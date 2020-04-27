@@ -67,6 +67,14 @@
 		CD598991245774930058654B /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
 		CD598992245774930058654B /* Hope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hope.swift; sourceTree = "<group>"; };
 		CD59899A245774D00058654B /* HTFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTFile.swift; sourceTree = "<group>"; };
+		22D90070244D69BB00A57A44 /* Expect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expect.h; sourceTree = "<group>"; };
+		22D90071244D69BB00A57A44 /* Expect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Expect.mm; sourceTree = "<group>"; };
+		22D90072244D69BB00A57A44 /* TbxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbxString.h; sourceTree = "<group>"; };
+		22D90073244D69BB00A57A44 /* TbxString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TbxString.mm; sourceTree = "<group>"; };
+		22D90075244D69BB00A57A44 /* ExpectTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpectTests.mm; sourceTree = "<group>"; };
+		CDD7C25B2450C93A00CB08B1 /* HTMLFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLFile.h; sourceTree = "<group>"; };
+		CDD7C25C2450C93A00CB08B1 /* HTMLFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLFile.m; sourceTree = "<group>"; };
+		CDD7C25D2450C93A00CB08B1 /* HTMLTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HTMLTests.mm; sourceTree = "<group>"; };
 		CDEDB22A2444EFA800A43BFF /* vent.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vent.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

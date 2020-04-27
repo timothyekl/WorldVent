@@ -1,0 +1,32 @@
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push events for any branch.
+on: [push]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macOS-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+      
+    # Runs a set of commands using the runners shell
+    - name: Run fastlane build
+      env:
+        MATCH_REPO: ${{ secrets.MATCH_REPO }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      run: |
+        fastlane build --verbose
+
+    # Uploads the built IPA to GitHub
+    - name: Upload built IPA
+      uses: actions/upload-artifact@v1
+      with:
+        name: WorldVent
+        path: WorldVent.ipa
+

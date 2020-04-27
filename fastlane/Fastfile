@@ -1,0 +1,92 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+def require_env(key, desc)
+  value = ENV[key]
+  return value if value
+  UI.user_error! "Environment missing required value for '#{key}'. This value is #{desc}."
+end
+
+def generate_token(length)
+  charset = Array('A'..'Z') + Array('a'..'z') + Array('0'..'9')
+  return Array.new(length) { charset.sample }.join
+end
+
+platform :ios do
+  desc "Build the app"
+  lane :build do
+    # Cache the CI value so we're not rerunning the lane all the time
+    ci = is_ci
+
+    # Fetch some local signing variables
+    app_id = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+    match_repo = require_env("MATCH_REPO", "the Git repository containing match certificates")
+    keychain_name = "worldvent_ci_keychain"
+    keychain_password = generate_token(16)
+
+    # Create a local keychain if we're running in a context that wants it
+    if ci
+      create_keychain(
+        name: keychain_name,
+        password: keychain_password,
+        default_keychain: true,
+        unlock: true,
+        timeout: 900,
+        lock_when_sleeps: false,
+      )
+    end
+
+    # Get code signing bits decrypted & located
+    match_type = "appstore"
+    match_params = {
+      type: match_type,
+      readonly: ci,
+      team_id: team_id,
+      git_url: match_repo,
+      shallow_clone: ci,
+    }
+    if ci
+      match_params.merge!({
+        keychain_name: keychain_name,
+        keychain_password: keychain_password,
+        readonly: true,
+        shallow_clone: true,
+      })
+    end
+    match(match_params)
+
+    if ci
+      profile_key = "sigh_#{app_id}_#{match_type}_profile-path"
+      profile_path = require_env(profile_key, "the path to the provisioning profile")
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        code_sign_identity: "Apple Distribution",
+      )
+      update_project_provisioning(
+        profile: profile_path,
+        target_filter: "WorldVent",
+        build_configuration: "Release",
+        code_signing_identity: "Apple Distribution:",
+      )
+    end
+
+    build_app(
+      scheme: "WorldVent",
+    )
+  end
+end
