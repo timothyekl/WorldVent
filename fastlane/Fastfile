@@ -21,21 +21,52 @@ def require_env(key, desc)
   UI.user_error! "Environment missing required value for '#{key}'. This value is #{desc}."
 end
 
+def generate_token(length)
+  charset = Array('A'..'Z') + Array('a'..'z') + Array('0'..'9')
+  return Array.new(length) { charset.sample }.join
+end
+
 platform :ios do
   desc "Build the app"
   lane :build do
+    # Cache the CI value so we're not rerunning the lane all the time
     ci = is_ci
 
+    # Fetch some local signing variables
     team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
     match_repo = require_env("MATCH_REPO", "the Git repository containing match certificates")
+    keychain_name = "worldvent_ci_keychain"
+    keychain_password = generate_token(16)
 
-    match(
+    # Create a local keychain if we're running in a context that wants it
+    if ci
+      create_keychain(
+        name: keychain_name,
+        password: keychain_password,
+        default_keychain: true,
+        unlock: true,
+        timeout: 900,
+        lock_when_sleeps: false,
+      )
+    end
+
+    # Get code signing bits decrypted & located
+    match_params = {
       type: "appstore",
       readonly: ci,
       team_id: team_id,
       git_url: match_repo,
       shallow_clone: ci,
-    )
+    }
+    if ci
+      match_params.merge!({
+        keychain_name: keychain_name,
+        keychain_password: keychain_password,
+        readonly: true,
+        shallow_clone: true,
+      })
+    end
+    match(match_params)
 
     if ci
       update_project_provisioning(
