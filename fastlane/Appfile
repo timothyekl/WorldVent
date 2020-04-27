@@ -1,0 +1,7 @@
+app_identifier("com.timekl.WorldVent") # The bundle identifier of your app
+apple_id("lithium3141@gmail.com") # Your Apple email address
+
+team_id("888CL5L8M4") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
