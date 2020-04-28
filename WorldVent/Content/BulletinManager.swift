@@ -152,7 +152,9 @@ class BulletinManager: NSObject, URLSessionDelegate, URLSessionTaskDelegate, URL
     
     func loadContents(of bulletin: Bulletin, completion: (Data?, Error?) -> Void) {
         let contentsFileURL = self.contentsFileURL(for: bulletin)
-        assert(contentsFileURL.isFileURL)
+        
+        // I believe this is no longer true. The contentFileURL is on your sever MB
+//        assert(contentsFileURL.isFileURL)
         
         do {
             let data = try Data(contentsOf: contentsFileURL)
