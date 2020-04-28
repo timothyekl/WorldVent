@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tim Ekl. All rights reserved.
 //
 
+import WorldVent
 import XCTest
 import Foundation
 
@@ -140,8 +141,30 @@ public struct ThatView
         return ThatNumber(0);
     }
     
+    var superview:ThatView {
+        return ThatView(value?.superview);
+    }
     
     var isNil : ThatBoolean {
         return ThatBoolean(value==nil);
     }
+}
+
+
+
+
+// MARK: WorldVent specific
+
+public struct ThatHTFile {
+    let value: HTFile;
+    init(_ inVal:HTFile) {
+          value=inVal;
+      }
+    
+    var exists: ThatBoolean {
+        return ThatBoolean(value.exists);
+    }
+    
+    
+       
 }

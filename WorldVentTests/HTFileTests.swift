@@ -22,8 +22,8 @@ class HTFileTests: XCTestCase {
     func testExists() throws {
         let index=HTFile(path:"index.html")
         let bad=HTFile(path:"albatross");
-        Hope(ThatBoolean(index.exists));
-        Hope(ThatBoolean(bad.exists).isFalse);
+        Hope(ThatHTFile(index).exists);
+        Hope(ThatHTFile(bad).exists.isFalse);
     }
 
     func testHTML() throws {
@@ -54,8 +54,7 @@ class HTFileTests: XCTestCase {
         let links=index.links;
         XCTAssertFalse(links.count==0);
         for path in links {
-            let f=HTFile(path:path);
-            Hope(f.exists);
+            Hope(ThatHTFile(HTFile(path:path)).exists);
         }
     }
     

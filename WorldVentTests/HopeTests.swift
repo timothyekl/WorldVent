@@ -64,6 +64,7 @@ class HopeTests: XCTestCase {
         v.isHidden=false;
         Hope(ThatView(v).isHidden.isFalse);
         Hope(ThatView(v).width.isEqualTo(500));
+        Hope(ThatView(v).superview.isNil);
 
     }
     
