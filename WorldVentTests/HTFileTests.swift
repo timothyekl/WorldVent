@@ -70,4 +70,16 @@ class HTFileTests: XCTestCase {
         Hope(ThatArray(headings).count.isEqualTo(1));
         Hope(ThatArray(headings).contains("Overview"));
     }
+    
+    func testFileDiscovery() {
+        let root=HTFile(path:"Documentation");
+        let paths=root.allFiles;
+        Hope(ThatArray(paths).isNotEmpty);
+        Hope(ThatArray(paths).contains("index.html"));
+        Hope(ThatArray(paths).contains("doc/index.html"));
+
+    }
+    
+    
 }
+

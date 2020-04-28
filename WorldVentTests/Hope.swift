@@ -111,6 +111,15 @@ public struct ThatArray
     func contains(_ s:String)->ThatBoolean {
         return ThatBoolean(value.contains(s));
     }
+    
+    var isEmpty:ThatBoolean {
+        return ThatBoolean(value.isEmpty);
+    }
+    
+    var isNotEmpty:ThatBoolean {
+           return ThatBoolean(!value.isEmpty);
+       }
+    
 }
 
 

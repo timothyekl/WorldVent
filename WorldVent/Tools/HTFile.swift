@@ -27,6 +27,21 @@ public struct HTFile  {
         return "";
     }
     
+    public var allFiles: [String] {
+        let fpath=Bundle.main.path(forResource: "Documentation", ofType: "", inDirectory: "")
+        guard let f = fpath else {return []}
+        var files=Array<String>();
+        let enumerator=FileManager.default.enumerator(atPath: f);
+        guard let e=enumerator else {return []};
+        for f in e.enumerated() {
+            let file=f.element as! String;
+            if (file.contains(".html")) {
+                files.append(file);
+            }
+        }
+        return files;
+    }
+    
     public var url : URL {
         return URL(fileURLWithPath: self.filePath)
     }
