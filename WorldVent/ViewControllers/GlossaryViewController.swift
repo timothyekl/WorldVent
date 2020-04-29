@@ -9,13 +9,12 @@
 import UIKit
 import WebKit
 
-class GlossaryViewController: UIViewController {
-    @IBOutlet var webView: WKWebView!
+class GlossaryViewController: SearchableWebViewController {
+    override var initialFilePath: String {
+        return "index.html"
+    }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let f=HTFile(path:"index.html")
-        self.webView.loadHTMLString(f.html, baseURL: f.url)
+    override var searchBasePath: String {
+        return ""
     }
 }

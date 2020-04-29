@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2241A088245913E0005A791B /* SearchableWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241A087245913E0005A791B /* SearchableWebViewController.swift */; };
 		2243EAF12443EE2D005C3090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2243EAF02443EE2D005C3090 /* AppDelegate.swift */; };
 		2243EAF52443EE2D005C3090 /* VentilatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */; };
 		2243EAF82443EE2D005C3090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2243EAF62443EE2D005C3090 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2241A087245913E0005A791B /* SearchableWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableWebViewController.swift; sourceTree = "<group>"; };
 		2243EAED2443EE2D005C3090 /* WorldVent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldVent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2243EAF02443EE2D005C3090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentilatorViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		226ECC022446E79F00C9F201 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2241A087245913E0005A791B /* SearchableWebViewController.swift */,
 				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
 				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
 				22D9005F244C0DD400A57A44 /* BulletinViewController.swift */,
@@ -291,6 +294,7 @@
 			files = (
 				2243EAF52443EE2D005C3090 /* VentilatorViewController.swift in Sources */,
 				2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */,
+				2241A088245913E0005A791B /* SearchableWebViewController.swift in Sources */,
 				227363112446E8A300C6C935 /* Bulletin.swift in Sources */,
 				CD59899B245774D00058654B /* HTFile.swift in Sources */,
 				2243EAF12443EE2D005C3090 /* AppDelegate.swift in Sources */,
