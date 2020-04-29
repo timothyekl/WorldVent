@@ -17,8 +17,8 @@ class VentilatorViewController: UIViewController,UISearchResultsUpdating,UISearc
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        let f=HTFile(path:"doc/index.html");
-        self.webView.loadHTMLString(f.html, baseURL: f.url);
+        let f=HTFile(path:"doc/index.html")
+        self.webView.loadHTMLString(f.html, baseURL: f.url)
 
 
         searchController = UISearchController(searchResultsController: nil)

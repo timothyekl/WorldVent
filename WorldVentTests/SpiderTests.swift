@@ -23,21 +23,21 @@ class SpiderTests: XCTestCase {
 
     func testSpider() throws {
         let spider=Spider(start: "index")
-        XCTAssertNotNil(spider.paths);
-        XCTAssertTrue(spider.paths.contains("/app/Bulletins.html"));
-        XCTAssertTrue(spider.paths.contains("/doc/index.html"));
-        XCTAssertFalse(spider.paths.contains("/frogs/bullfrog.html"));
-        XCTAssertTrue(spider.missing.count==0);
+        XCTAssertNotNil(spider.paths)
+        XCTAssertTrue(spider.paths.contains("/app/Bulletins.html"))
+        XCTAssertTrue(spider.paths.contains("/doc/index.html"))
+        XCTAssertFalse(spider.paths.contains("/frogs/bullfrog.html"))
+        XCTAssertTrue(spider.missing.count==0)
     }
     
     func testThatReachablePagesHaveRequiredElements() throws {
-        let spider=Spider(start:"index");
+        let spider=Spider(start:"index")
         for path in spider.paths {
-            let f=HTFile(path:path);
-            XCTAssertFalse(f.viewport=="","no viewport \(path)");
-            XCTAssertTrue(f.headings.count==1,"no h1 \(path)");
-            XCTAssertTrue(f.stylesheets.count>0,"no stylesheet \(path)");
-            XCTAssertFalse(f.stylesheets.first(where:{$0.contains("screen.css")})==nil,"missing screen.css \(path)");
+            let f=HTFile(path:path)
+            XCTAssertFalse(f.viewport=="","no viewport \(path)")
+            XCTAssertTrue(f.headings.count==1,"no h1 \(path)")
+            XCTAssertTrue(f.stylesheets.count>0,"no stylesheet \(path)")
+            XCTAssertFalse(f.stylesheets.first(where:{$0.contains("screen.css")})==nil,"missing screen.css \(path)")
         }
     }
 

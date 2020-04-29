@@ -14,7 +14,7 @@ class Spider {
     private(set) var missing=Set<String>()
     private var unvisited=Set<String>()
 
-    private let start:String;
+    private let start:String
     
     init(start:String) {
         self.start=start
@@ -22,7 +22,7 @@ class Spider {
     }
     
     private func crawl() {
-        unvisited.removeAll();
+        unvisited.removeAll()
         unvisited.insert(self.start)
         while (!unvisited.isEmpty) {
             let next=unvisited.removeFirst()
@@ -31,23 +31,23 @@ class Spider {
     }
     
     fileprivate func traverse( _ next: String) {
-        let f=HTFile(path:next);
+        let f=HTFile(path:next)
         if (!f.exists) {
              missing.insert(next)
-            return;
+            return
         }
-        paths.insert(next);
-        let links=f.links;
+        paths.insert(next)
+        let links=f.links
         for link in links {
             if (hasBeenScheduled(link)) {continue;}
-            unvisited.insert(link);
+            unvisited.insert(link)
         }
     }
     
     fileprivate func hasBeenScheduled(_ page:String) ->Bool {
         if (unvisited.contains(page)){ return true;}
         if (paths.contains(page)) {return true;}
-        return false;
+        return false
     }
 
 }

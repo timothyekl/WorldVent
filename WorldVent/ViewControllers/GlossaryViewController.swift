@@ -15,7 +15,7 @@ class GlossaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let f=HTFile(path:"index.html");
-        self.webView.loadHTMLString(f.html, baseURL: f.url);
+        let f=HTFile(path:"index.html")
+        self.webView.loadHTMLString(f.html, baseURL: f.url)
     }
 }

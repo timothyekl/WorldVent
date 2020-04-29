@@ -17,14 +17,14 @@ public func Hope(_ expression: @autoclosure () throws -> Bool, _ message: @autoc
 
 public struct ThatBoolean
 {
-    let value:Bool;
+    let value:Bool
     
     init(_ inVal:Bool) {
-        value=inVal;
+        value=inVal
     }
     
     init(_ inVal:ThatBoolean){
-        value=inVal.isTrue;
+        value=inVal.isTrue
     }
     
     var isTrue: Bool { return value;}
@@ -39,9 +39,9 @@ public func Hope(_ expression: @autoclosure () throws -> ThatBoolean, _ message:
 
 public struct ThatString
 {
-    let value:String;
+    let value:String
     init(_ inVal:String) {
-        value=inVal;
+        value=inVal
     }
     
     var isTrue: ThatBoolean { return ThatBoolean(value != "");}
@@ -53,19 +53,19 @@ public struct ThatString
     }
     
     func isEqualTo(_ s:String)->ThatBoolean {
-    return ThatBoolean(value==s);
+    return ThatBoolean(value==s)
     }
     
     func isGreaterThan(_ s:String)->ThatBoolean {
-    return ThatBoolean(value>s);
+    return ThatBoolean(value>s)
     }
     
     func isLessThan(_ s:String)->ThatBoolean {
-    return ThatBoolean(value<s);
+    return ThatBoolean(value<s)
     }
     
     func isNot(_ s:String)->ThatBoolean {
-        return ThatBoolean(value != s);
+        return ThatBoolean(value != s)
     }
     
     var length:ThatNumber {
@@ -76,31 +76,31 @@ public struct ThatString
 
 public struct ThatNumber
 {
-    let value:Double;
+    let value:Double
     init(_ inVal:Double) {
-        value=inVal;
+        value=inVal
     }
     
 
     func isEqualTo(_ s:Double)->ThatBoolean {
-        return ThatBoolean(value==s);
+        return ThatBoolean(value==s)
     }
     func isNot(_ s:Double)->ThatBoolean {
-        return ThatBoolean(value != s);
+        return ThatBoolean(value != s)
     }
     func isGreaterThan(_ s:Double)->ThatBoolean {
-        return ThatBoolean(value>s);
+        return ThatBoolean(value>s)
        }
     func isLessThan(_ s:Double)->ThatBoolean {
-          return ThatBoolean(value<s);
+          return ThatBoolean(value<s)
       }
 }
 
 public struct ThatArray
 {
-    let value: Array<String>;
+    let value: Array<String>
     init(_ inVal:Array<String>) {
-           value=inVal;
+           value=inVal
        }
     
     var count:ThatNumber {return ThatNumber(Double(value.count))}
@@ -109,15 +109,15 @@ public struct ThatArray
     }
     
     func contains(_ s:String)->ThatBoolean {
-        return ThatBoolean(value.contains(s));
+        return ThatBoolean(value.contains(s))
     }
     
     var isEmpty:ThatBoolean {
-        return ThatBoolean(value.isEmpty);
+        return ThatBoolean(value.isEmpty)
     }
     
     var isNotEmpty:ThatBoolean {
-           return ThatBoolean(!value.isEmpty);
+           return ThatBoolean(!value.isEmpty)
        }
     
 }
@@ -125,9 +125,9 @@ public struct ThatArray
 
 public struct ThatView
 {
-    let value: UIView?;
+    let value: UIView?
     init(_ inVal:UIView?) {
-           value=inVal;
+           value=inVal
        }
     
     var isHidden:ThatBoolean {
@@ -139,23 +139,23 @@ public struct ThatView
     
     var width:ThatNumber {
         if let v=value {
-            return ThatNumber(Double(v.frame.size.width));
+            return ThatNumber(Double(v.frame.size.width))
         }
         return ThatNumber(0)
     }
     var height:ThatNumber {
         if let v=value{
-            return ThatNumber(Double(v.frame.size.height));
+            return ThatNumber(Double(v.frame.size.height))
         }
-        return ThatNumber(0);
+        return ThatNumber(0)
     }
     
     var superview:ThatView {
-        return ThatView(value?.superview);
+        return ThatView(value?.superview)
     }
     
     var isNil : ThatBoolean {
-        return ThatBoolean(value==nil);
+        return ThatBoolean(value==nil)
     }
 }
 
@@ -165,13 +165,13 @@ public struct ThatView
 // MARK: WorldVent specific
 
 public struct ThatHTFile {
-    let value: HTFile;
+    let value: HTFile
     init(_ inVal:HTFile) {
-          value=inVal;
+          value=inVal
       }
     
     var exists: ThatBoolean {
-        return ThatBoolean(value.exists);
+        return ThatBoolean(value.exists)
     }
     
     
