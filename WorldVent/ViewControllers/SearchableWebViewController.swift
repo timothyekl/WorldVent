@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 
 /// A single instance of a search result inside HTML content.
-fileprivate struct WebSearchResult {
+public struct WebSearchResult {
     /// The phrase that is (or surrounds) a match for a search string.
     var matchPhrase: String
     /// Additional contextual information about the search result (e.g. the file path or enclosing section name).
@@ -100,9 +100,8 @@ fileprivate class WebSearchResultsViewController: UITableViewController {
     }
     
     private func searchContent(for searchString: String) -> [WebSearchResult] {
-        // TODO: This is the part that needs implementing. Search the HTML content at the `basePath` and return `WebSearchResult` instances.
-        let placeholderResult = WebSearchResult(matchPhrase: "Example match", detailText: "index.html", resultFilePath: (basePath as NSString).appendingPathComponent("index.html"))
-        return [placeholderResult]
+        let search=Searcher(path: basePath,for: searchString )
+        return search.results;
     }
 }
 
@@ -142,7 +141,7 @@ class SearchableWebViewController: UIViewController {
         }
         
         // Configure the search controller & navigation item
-        let resultsController = WebSearchResultsViewController(basePath: searchBasePath)
+        let resultsController = WebSearchResultsViewController(basePath: "/") // was basePathw
         resultsController.delegate = self
         
         searchController = UISearchController(searchResultsController: resultsController)
@@ -172,6 +171,8 @@ extension SearchableWebViewController: UISearchResultsUpdating {
 extension SearchableWebViewController: WebSearchResultsViewControllerDelegate {
     fileprivate func webSearchResultsViewController(_ controller: WebSearchResultsViewController, didSelectSearchResult searchResult: WebSearchResult) {
         searchController.isActive = false
-        // TODO: navigate the web view to the page indicated by searchResult.resultFilePath
+        
+        let f = HTFile(path: searchResult.resultFilePath)
+        self.webView.loadHTMLString(f.html, baseURL: f.url)        
     }
 }

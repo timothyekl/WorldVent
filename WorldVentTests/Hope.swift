@@ -15,6 +15,8 @@ public func Hope(_ expression: @autoclosure () throws -> Bool, _ message: @autoc
 }
 
 
+// TODO better failure messages. message instance value; pass message for failure to next ThatX in chain
+
 public struct ThatBoolean
 {
     let value:Bool
@@ -80,13 +82,22 @@ public struct ThatNumber
     init(_ inVal:Double) {
         value=inVal
     }
+    init(_ inVal:Int) {
+        value=Double(inVal)
+    }
     
 
     func isEqualTo(_ s:Double)->ThatBoolean {
         return ThatBoolean(value==s)
     }
+    func isEqualTo(_ s:Int)->ThatBoolean {
+        return ThatBoolean(value==Double(s))
+    }
     func isNot(_ s:Double)->ThatBoolean {
         return ThatBoolean(value != s)
+    }
+    func isNot(_ s:Int)->ThatBoolean {
+        return ThatBoolean(value != Double(s))
     }
     func isGreaterThan(_ s:Double)->ThatBoolean {
         return ThatBoolean(value>s)
@@ -169,10 +180,17 @@ public struct ThatHTFile {
     init(_ inVal:HTFile) {
           value=inVal
       }
+    init(_ inVal:String) {
+        value=HTFile(path: inVal)
+    }
     
     var exists: ThatBoolean {
         return ThatBoolean(value.exists)
     }
+    
+    var allFiles: ThatArray {
+        return ThatArray(value.allFiles);
+       }
     
     
        

@@ -22,6 +22,8 @@
 		227363132446EA4F00C6C935 /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 227363122446EA4E00C6C935 /* Documentation */; };
 		22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9005F244C0DD400A57A44 /* BulletinViewController.swift */; };
 		22D90068244D69AD00A57A44 /* BulletinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D90067244D69AD00A57A44 /* BulletinTests.swift */; };
+		CD11EFBB2459F49C009428EF /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD11EFBA2459F49C009428EF /* Searcher.swift */; };
+		CD11EFBD2459FF94009428EF /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD11EFBC2459FF94009428EF /* SearchTests.swift */; };
 		CD2A6709245775F800560CDF /* HopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2A6707245775F800560CDF /* HopeTests.swift */; };
 		CD2A670A245775F800560CDF /* HTFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2A6708245775F800560CDF /* HTFileTests.swift */; };
 		CD5989962457749B0058654B /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD598991245774930058654B /* Spider.swift */; };
@@ -62,6 +64,8 @@
 		22D90067244D69AD00A57A44 /* BulletinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinTests.swift; sourceTree = "<group>"; };
 		22D90069244D69AD00A57A44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorldVentTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD11EFBA2459F49C009428EF /* Searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcher.swift; sourceTree = "<group>"; };
+		CD11EFBC2459FF94009428EF /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		CD2A6707245775F800560CDF /* HopeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HopeTests.swift; sourceTree = "<group>"; };
 		CD2A6708245775F800560CDF /* HTFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTFileTests.swift; sourceTree = "<group>"; };
 		CD598990245774930058654B /* SpiderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderTests.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				CD598990245774930058654B /* SpiderTests.swift */,
 				CD2A6707245775F800560CDF /* HopeTests.swift */,
 				CD2A6708245775F800560CDF /* HTFileTests.swift */,
+				CD11EFBC2459FF94009428EF /* SearchTests.swift */,
 				22D90067244D69AD00A57A44 /* BulletinTests.swift */,
 				22D90069244D69AD00A57A44 /* Info.plist */,
 				22D9006F244D69BA00A57A44 /* WorldVentTests-Bridging-Header.h */,
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CD59899A245774D00058654B /* HTFile.swift */,
+				CD11EFBA2459F49C009428EF /* Searcher.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD11EFBB2459F49C009428EF /* Searcher.swift in Sources */,
 				2243EAF52443EE2D005C3090 /* VentilatorViewController.swift in Sources */,
 				2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */,
 				2241A088245913E0005A791B /* SearchableWebViewController.swift in Sources */,
@@ -311,6 +318,7 @@
 				CD5989982457749B0058654B /* SpiderTests.swift in Sources */,
 				CD5989972457749B0058654B /* Hope.swift in Sources */,
 				CD2A6709245775F800560CDF /* HopeTests.swift in Sources */,
+				CD11EFBD2459FF94009428EF /* SearchTests.swift in Sources */,
 				CD5989962457749B0058654B /* Spider.swift in Sources */,
 				CD2A670A245775F800560CDF /* HTFileTests.swift in Sources */,
 				22D90068244D69AD00A57A44 /* BulletinTests.swift in Sources */,

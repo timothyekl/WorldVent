@@ -92,19 +92,32 @@ public struct HTFile  {
         return result
     }
     
+    public var searchText:String {
+        /*
+        let s=styledText;
+        if let stext=s {return stext.string}
+        */
+        return html;
+    }
+    
+    public var styledText:NSAttributedString? {
+        let d=self.html.data(using:String.Encoding.utf8 )
+        guard let data=d else{ return nil;}
+        guard let ns=try? NSAttributedString(data: data, options:
+            [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil) else {return nil;}
+        return ns;
+
+    }
 
     
     public var links: [String] {
         var result=Array<String>()
         var destinations=Set<String>()
-        let d=self.html.data(using:String.Encoding.utf8 )
-        guard let data=d else{ return result;}
-        guard let ns=try? NSAttributedString(data: data, options:
-            [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil) else {return result;}
-        let s=ns.string
+        let ns=self.styledText;
+        guard let s=ns?.string else {return result}
         let nsrange=NSRange(s.startIndex..<s.endIndex,in: s)
 
-        ns.enumerateAttribute(NSAttributedString.Key.link, in: nsrange, options: []) { (value, range, stop) in
+        ns?.enumerateAttribute(NSAttributedString.Key.link, in: nsrange, options: []) { (value, range, stop) in
             if let url = value as? URL {
                 let scheme=url.scheme
                 if (scheme=="applewebdata" || scheme=="") { // ignore non-local files

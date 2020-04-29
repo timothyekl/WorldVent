@@ -19,14 +19,14 @@ class HTFileTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExists() throws {
+    func testExists()  {
         let index=HTFile(path:"index.html")
         let bad=HTFile(path:"albatross")
         Hope(ThatHTFile(index).exists)
         Hope(ThatHTFile(bad).exists.isFalse)
     }
 
-    func testHTML() throws {
+    func testHTML()  {
         let index=HTFile(path:"index.html")
         let s=index.html
         Hope(ThatString(s).contains("<html"))
@@ -34,7 +34,7 @@ class HTFileTests: XCTestCase {
         Hope(ThatString(s).contains("Kareem").isFalse)
     }
     
-    func testExtractHref() throws {
+    func testExtractHref()  {
         let tag="<a href=\"go.html\">test</a>"
         let f=HTFile(path:"albatross")
         let result=f.extractHref(tag:tag)
@@ -72,12 +72,9 @@ class HTFileTests: XCTestCase {
     }
     
     func testFileDiscovery() {
-        let root=HTFile(path:"Documentation")
-        let paths=root.allFiles
-        Hope(ThatArray(paths).isNotEmpty)
-        Hope(ThatArray(paths).contains("index.html"))
-        Hope(ThatArray(paths).contains("doc/index.html"))
-
+        Hope(ThatHTFile("Documentation").allFiles.isNotEmpty);
+        Hope(ThatHTFile("Documentation").allFiles.contains("index.html"));
+        Hope(ThatHTFile("Documentation").allFiles.contains("doc/index.html"));
     }
     
     
