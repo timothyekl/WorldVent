@@ -41,10 +41,14 @@ class HopeTests: XCTestCase {
         Hope(ThatString("zonker").isGreaterThan ("zelda"))
     }
     
+
+    
     func testThatNumber() throws {
         Hope(ThatNumber(2).isEqualTo(1+1))
         Hope(ThatNumber(3.1415927).isNot(3))
         Hope(ThatNumber(45).isGreaterThan(6))
+        Hope(ThatNumber(4).isLessThan(6))
+
     }
     
 

@@ -11,7 +11,7 @@ import Foundation
 
 public struct HTFile  {
 
-    var path=""
+    public var path=""
     
     public init(path:String) {
         self.path=path
