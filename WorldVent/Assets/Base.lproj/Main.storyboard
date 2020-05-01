@@ -260,7 +260,7 @@
                     <navigationItem key="navigationItem" id="liI-aE-ZSI">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="xm6-ii-uJD">
                             <connections>
-                                <segue destination="UQI-Lf-9cR" kind="unwind" unwindAction="unwindFromOnboarding:" id="cfm-dJ-S6t"/>
+                                <segue destination="UQI-Lf-9cR" kind="unwind" identifier="unwindFromOnboarding" unwindAction="unwindFromOnboarding:" id="cfm-dJ-S6t"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

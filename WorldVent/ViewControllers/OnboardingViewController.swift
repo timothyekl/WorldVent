@@ -21,13 +21,17 @@ private let ForceOnboardingVisibleKey = "ForceOnboardingVisible"
 /// this value.
 private let OnboardingVersion = 1
 
+/// A private key-value observing context value to unique this file's listeners from others.
+/// The value of this variable is irrelevant.
+private var KVOContext = 0
+
 class OnboardingTabBarController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showOnboardingIfNeeded()
     }
     
-    private static var needsOnboarding: Bool {
+    fileprivate static var needsOnboarding: Bool {
         if UserDefaults.standard.bool(forKey: ForceOnboardingVisibleKey) {
             return true
         }
@@ -64,6 +68,12 @@ class OnboardingViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        UserDefaults.standard.addObserver(self, forKeyPath: LastCompletedOnboardingVersionKey, options: [], context: &KVOContext)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         allowDismiss = false
@@ -73,6 +83,18 @@ class OnboardingViewController: UIViewController {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.allowDismiss = true
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard context == &KVOContext else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        
+        assert(keyPath == LastCompletedOnboardingVersionKey)
+        if !OnboardingTabBarController.needsOnboarding {
+            performSegue(withIdentifier: "unwindFromOnboarding", sender: self)
         }
     }
 }
