@@ -219,6 +219,60 @@
             </objects>
             <point key="canvasLocation" x="1025" y="2249"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rFA-CF-tfJ">
+            <objects>
+                <navigationController id="OgS-y3-STU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="thC-3F-M8m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0oi-pg-BYu" kind="relationship" relationship="rootViewController" id="5do-rI-nCP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFz-wh-w9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="-580"/>
+        </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="FYw-g5-V6h">
+            <objects>
+                <viewController id="0oi-pg-BYu" customClass="OnboardingViewController" customModule="WorldVent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U8k-M2-pOq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for using WorldVent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-AG-mUO">
+                                <rect key="frame" x="99" y="421.5" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gVd-AG-mUO" firstAttribute="centerX" secondItem="aFx-JR-cUd" secondAttribute="centerX" id="839-77-QV9"/>
+                            <constraint firstItem="gVd-AG-mUO" firstAttribute="centerY" secondItem="aFx-JR-cUd" secondAttribute="centerY" id="B9p-1y-AmM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aFx-JR-cUd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="liI-aE-ZSI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="xm6-ii-uJD">
+                            <connections>
+                                <segue destination="UQI-Lf-9cR" kind="unwind" identifier="unwindFromOnboarding" unwindAction="unwindFromOnboarding:" id="cfm-dJ-S6t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButtonItem" destination="xm6-ii-uJD" id="IbA-7I-VzV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SkN-L3-OBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="UQI-Lf-9cR" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="608.69565217391312" y="-581.25"/>
+        </scene>
         <!--Ventilator-->
         <scene sceneID="nkD-il-93u">
             <objects>
@@ -238,10 +292,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Onboarding Tab Bar Controller-->
         <scene sceneID="EHi-eI-uP8">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bw1-Qh-KOv" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bw1-Qh-KOv" customClass="OnboardingTabBarController" customModule="WorldVent" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZP-wp-kD4">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -253,6 +307,7 @@
                         <segue destination="N9r-Fe-KtA" kind="relationship" relationship="viewControllers" id="ciU-v1-Txj"/>
                         <segue destination="rnh-jm-EDa" kind="relationship" relationship="viewControllers" id="Lbk-ta-6ee"/>
                         <segue destination="VLT-La-SfW" kind="relationship" relationship="viewControllers" id="gSy-D3-QUL"/>
+                        <segue destination="OgS-y3-STU" kind="presentation" identifier="showOnboarding" id="khH-mt-but"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="152-lO-Kqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
