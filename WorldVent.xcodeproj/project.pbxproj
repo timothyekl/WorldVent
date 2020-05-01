@@ -20,6 +20,7 @@
 		2273630E2446E86000C6C935 /* BulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273630D2446E86000C6C935 /* BulletinManager.swift */; };
 		227363112446E8A300C6C935 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227363102446E8A300C6C935 /* Bulletin.swift */; };
 		227363132446EA4F00C6C935 /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 227363122446EA4E00C6C935 /* Documentation */; };
+		22897AAB245BCA34009022E2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22897AAA245BCA34009022E2 /* OnboardingViewController.swift */; };
 		22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9005F244C0DD400A57A44 /* BulletinViewController.swift */; };
 		22D90068244D69AD00A57A44 /* BulletinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D90067244D69AD00A57A44 /* BulletinTests.swift */; };
 		CD11EFBB2459F49C009428EF /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD11EFBA2459F49C009428EF /* Searcher.swift */; };
@@ -59,6 +60,7 @@
 		2273630D2446E86000C6C935 /* BulletinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinManager.swift; sourceTree = "<group>"; };
 		227363102446E8A300C6C935 /* Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		227363122446EA4E00C6C935 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
+		22897AAA245BCA34009022E2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		22D9005F244C0DD400A57A44 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
 		22D90065244D69AD00A57A44 /* WorldVentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldVentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D90067244D69AD00A57A44 /* BulletinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinTests.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		226ECC022446E79F00C9F201 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				22897AAA245BCA34009022E2 /* OnboardingViewController.swift */,
 				2241A087245913E0005A791B /* SearchableWebViewController.swift */,
 				2243EAF42443EE2D005C3090 /* VentilatorViewController.swift */,
 				226ECBFA2446DBF600C9F201 /* GlossaryViewController.swift */,
@@ -307,6 +310,7 @@
 				2243EAF12443EE2D005C3090 /* AppDelegate.swift in Sources */,
 				226ECBFB2446DBF600C9F201 /* GlossaryViewController.swift in Sources */,
 				2243EB052443F567005C3090 /* SettingsViewController.swift in Sources */,
+				22897AAB245BCA34009022E2 /* OnboardingViewController.swift in Sources */,
 				22D90060244C0DD400A57A44 /* BulletinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
