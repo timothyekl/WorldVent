@@ -52,9 +52,10 @@ platform :ios do
     end
 
     # Get code signing bits decrypted & located
-    match_type = "appstore"
+    match_type = "adhoc"
     match_params = {
       type: match_type,
+      app_identifier: app_id,
       readonly: ci,
       team_id: team_id,
       git_url: match_repo,
