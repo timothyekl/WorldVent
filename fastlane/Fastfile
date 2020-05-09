@@ -60,13 +60,12 @@ platform :ios do
       team_id: team_id,
       git_url: match_repo,
       shallow_clone: ci,
+      force_for_new_devices: !ci,
     }
     if ci
       match_params.merge!({
         keychain_name: keychain_name,
         keychain_password: keychain_password,
-        readonly: true,
-        shallow_clone: true,
       })
     end
     match(match_params)
